@@ -23,6 +23,15 @@
       hasPaintScheduled = true
 
       requestAnimationFrame(() => {
+        slides.forEach((slide, index) => {
+          const button = slide.querySelector(`.Slider-button`)
+          if (!button) return
+
+          const isActiveSlide = index === activeIndex
+          button.style.pointerEvents = isActiveSlide ? `auto` : `none`
+          button.tabIndex = isActiveSlide ? 0 : -1
+        })
+
         for (let index = 0; index < dots.length; index++) {
           dots[index]?.classList.toggle(`isActive`, index === activeIndex)
         }
@@ -108,10 +117,16 @@
       goToIndex(boundedIndex)
     }
     const handleCountrySelection = event => {
-      const button = event.target.closest(`.Slider-button`)
-      if (!button) return
-      const slug = app.canonicalCountry(app.normalizeCountry(new URL(button.href, location.href).searchParams.get(`pais`)))
+      const clickedButton = event.target.closest(`.Slider-button`)
+      if (!clickedButton) return
+
+      event.preventDefault()
+
+      const activeButton = slides[activeIndex]?.querySelector(`.Slider-button`) || clickedButton
+      const slug = app.canonicalCountry(app.normalizeCountry(new URL(activeButton.href, location.href).searchParams.get(`pais`)))
+
       slug && app.setCountry(slug)
+      window.location.assign(activeButton.href)
     }
     const handleSliderIntersection = entries => {
       isSliderInViewport = entries.some(entry => entry.isIntersecting)
