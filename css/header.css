@@ -27,6 +27,7 @@
     font-size: var(--fs-extrabig);
 }
 .Header-a{
+    min-width: 100%;
     padding: .625rem 1.25rem;
     cursor: pointer;
     transition: color .4s ease;

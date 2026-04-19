@@ -1,4 +1,5 @@
-'use strict'
+(() => {
+    'use strict'
 
 
 // Tabs del popup legal del footer
@@ -270,3 +271,4 @@ window.addEventListener(`DOMContentLoaded`, () => {
     }
 })
 window.addEventListener(`cart:changed`, updateHeader)
+})()

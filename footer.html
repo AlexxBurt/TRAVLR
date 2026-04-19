@@ -1,11 +1,22 @@
 
 <!-- Footer único que se reutilizará en cada página mediante JavaScript -->
 
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;inline-size:0;block-size:0;overflow:hidden">
+    <symbol id="icon-footer-toggle" viewBox="0 0 20 20">
+        <path fill="currentColor" fill-rule="evenodd"
+            d="M4.293 15.707a1 1 0 0 1 0-1.414l5-5a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414 0m0-6a1 1 0 0 1 0-1.414l5-5a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L10 5.414L5.707 9.707a1 1 0 0 1-1.414 0"
+            clip-rule="evenodd" />
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2.5"
+            d="m7 7l10 10M7 17L17 7" />
+    </symbol>
+</svg>
+
 <svg class="Footer-svg" xmlns="http://www.w3.org/2000/svg" width="20"
     height="20" viewBox="0 0 20 20">
-    <path fill="currentColor" fill-rule="evenodd"
-        d="M4.293 15.707a1 1 0 0 1 0-1.414l5-5a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414 0m0-6a1 1 0 0 1 0-1.414l5-5a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L10 5.414L5.707 9.707a1 1 0 0 1-1.414 0"
-        clip-rule="evenodd" />
+    <use href="#icon-footer-toggle"></use>
 </svg>
 
 <!-- Botónes ocultos del footer -->
@@ -150,10 +161,8 @@
                 <p>El usuario puede configurar su navegador para aceptar, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su dispositivo.</p>
             </section>
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="Popup-svg" width="80" height="80" viewBox="0 0 24 24"> <rect width="24" height="24" fill="none" />
-                <path fill="none" stroke="#fff" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2.5"
-                    d="m7 7l10 10M7 17L17 7" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="Popup-svg" width="80" height="80" viewBox="0 0 24 24">
+                <use href="#icon-close"></use>
             </svg>
         </div>
     </div>
