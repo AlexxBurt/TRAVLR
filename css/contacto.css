@@ -123,7 +123,7 @@ input [type="text"]{
 /* Responsive Móvil */
 @media (max-width: 480px){
     .Wrapper{
-        padding: 10dvh 4dvw;
+        padding: 10vh 4vw;
     }
     .Contact{
         padding: 1.5rem;

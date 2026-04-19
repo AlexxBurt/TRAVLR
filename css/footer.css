@@ -1,5 +1,5 @@
 .Footer{
-    width: 100dvw;
+    width: 100vw;
     min-height: fit-content;
     padding: .5rem 0;
     display: flex;
@@ -72,8 +72,8 @@
     transition: opacity 1s ease;
 }
 .Footer-background.isVisible{
-    width: 100dvw;
-    min-height: 100dvh;
+    width: 100vw;
+    min-height: 100vh;
     background-color: var(--c-secondary-75);
     display: block;
     opacity: 1;
@@ -84,7 +84,7 @@
     z-index: 3;
 }
 .Footer-popup{
-    min-height: 70dvh;
+    min-height: 70vh;
     width: 66%;
     background-color: var(--c-secondary-100);
     margin: 0 auto;

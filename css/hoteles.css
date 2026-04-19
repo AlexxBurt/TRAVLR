@@ -87,7 +87,7 @@
 @media (max-width: 960px){
     .Wrapper{
         grid-template-columns: 1fr;
-        padding: 16dvh 6dvw;
+        padding: 16vh 6vw;
     }
 }
 
@@ -95,7 +95,7 @@
 /* Responsive Tablet */
 @media (max-width: 768px){
     .Wrapper{
-        padding: 14dvh 6dvw;
+        padding: 14vh 6vw;
     }
     .Wrapper-content{
         max-width: 66%;

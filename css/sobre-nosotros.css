@@ -18,7 +18,7 @@
 .Wrapper-content{
     position: sticky;
     top: 20vh;
-    max-height: calc(100dvh - 20vh);
+    max-height: calc(100vh - 20vh);
     overflow-y: auto;
 }
 .Container{
@@ -163,11 +163,14 @@
 /* Responsive Móvil */
 @media (max-width: 480px){
     .Wrapper{
-        padding-bottom: 2dvh;
+        padding-bottom: 2vh;
     }
     .Container{
         flex-direction: column;
         gap: 2rem;
+    }
+    .Container-col{
+        max-width: 50%;
     }
     .Stats-grid , .Reviews-grid{
         grid-template-columns: 1fr;
@@ -185,5 +188,8 @@
     }
    .Container--bottom{
         flex-flow: column-reverse;
+   }
+   .u-h2{
+    text-align: start;
    }
 }

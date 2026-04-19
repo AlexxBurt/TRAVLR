@@ -131,9 +131,9 @@
     display: none;
 }
 .Popup-background.isVisible{
-    width: 100dvw;
-    min-height: 100dvh;
-    max-height: 100dvh;
+    width: 100vw;
+    min-height: 100vh;
+    max-height: 100vh;
     background-color: var(--c-secondary-75);
     display: grid;
     place-items: center;
@@ -315,7 +315,7 @@
 /* Responsive Móvil */
 @media (max-width: 480px){
     .Wrapper{
-        padding: 12dvh 1rem;
+        padding: 12vh 1rem;
         gap: 1rem;
     }
     .Form{

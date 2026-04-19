@@ -16,33 +16,52 @@
     let isSliderInViewport = true
     let hasPaintScheduled = false
     let hasSlidesPaintScheduled = false
+    let touchStartIndex = 0
 
     const paint = () => {
       if (hasPaintScheduled) return
       hasPaintScheduled = true
 
       requestAnimationFrame(() => {
-        const total = Math.max(slides.length, dots.length)
-        for (let index = 0; index < total; index++) {
-          const slide = slides[index]
-          const dot = dots[index]
-
-          if (slide) {
-            slide.style.transform = `translateY(-${activeIndex * window.innerHeight}px)`
-          }
-
-          dot?.classList.toggle(`isActive`, index === activeIndex)
+        for (let index = 0; index < dots.length; index++) {
+          dots[index]?.classList.toggle(`isActive`, index === activeIndex)
         }
 
         hasPaintScheduled = false
       })
     }
 
+    const getIndexFromScroll = () => {
+      const viewportCenter = slider.scrollTop + (slider.clientHeight / 2)
+      let nearestIndex = 0
+      let minDistance = Number.POSITIVE_INFINITY
+
+      slides.forEach((slide, index) => {
+        const center = slide.offsetTop + (slide.offsetHeight / 2)
+        const distance = Math.abs(center - viewportCenter)
+        if (distance < minDistance) {
+          minDistance = distance
+          nearestIndex = index
+        }
+      })
+
+      return nearestIndex
+    }
+
+    const goToIndex = (nextIndex, isSmooth = true) => {
+      const boundedIndex = Math.max(0, Math.min(nextIndex, slides.length - 1))
+      activeIndex = boundedIndex
+      slider.scrollTo({
+        top: slides[boundedIndex].offsetTop,
+        behavior: isSmooth ? `smooth` : `auto`
+      })
+      paint()
+    }
+
     const move = direction => {
       if (isLocked) return
       isLocked = true
-      activeIndex = (activeIndex + direction + slides.length) % slides.length
-      paint()
+      goToIndex(activeIndex + direction)
       setTimeout(() => {
         isLocked = false
       }, 850)
@@ -50,8 +69,7 @@
 
     const handleResize = () => paintSlides()
     const handleDotClick = index => {
-      activeIndex = index
-      paint()
+      goToIndex(index)
     }
     const handleKeydown = event => {
       if (event.key === `ArrowDown`) return move(1)
@@ -70,15 +88,24 @@
       const frame = event.target.closest(`.Slider-frame`)
       const nextIndex = slides.indexOf(frame)
       if (nextIndex < 0 || nextIndex === activeIndex) return
-      activeIndex = nextIndex
-      paint()
+      goToIndex(nextIndex)
     }
     const handleSliderScroll = () => {
-      const nextIndex = Math.round(slider.scrollTop / window.innerHeight)
+      const nextIndex = getIndexFromScroll()
       const isInvalidIndex = nextIndex < 0 || nextIndex >= slides.length || nextIndex === activeIndex
       if (isInvalidIndex) return
       activeIndex = nextIndex
       paint()
+    }
+    const handleTouchStart = () => {
+      touchStartIndex = getIndexFromScroll()
+    }
+    const handleTouchEnd = () => {
+      const rawIndex = getIndexFromScroll()
+      const minIndex = Math.max(0, touchStartIndex - 1)
+      const maxIndex = Math.min(slides.length - 1, touchStartIndex + 1)
+      const boundedIndex = Math.max(minIndex, Math.min(rawIndex, maxIndex))
+      goToIndex(boundedIndex)
     }
     const handleCountrySelection = event => {
       const button = event.target.closest(`.Slider-button`)
@@ -144,9 +171,11 @@
     window.addEventListener(`wheel`, handleWheel, { passive: false })
     sliderRoot.addEventListener(`focusin`, handleFocusIn)
     slider.addEventListener(`scroll`, handleSliderScroll)
+    slider.addEventListener(`touchstart`, handleTouchStart, { passive: true })
+    slider.addEventListener(`touchend`, handleTouchEnd, { passive: true })
     sliderRoot.addEventListener(`click`, handleCountrySelection)
 
-    paint()
+    goToIndex(activeIndex, false)
   }
 
   document.addEventListener(`DOMContentLoaded`, handleDomContentLoaded)
