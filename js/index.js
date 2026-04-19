@@ -16,7 +16,6 @@
     let isSliderInViewport = true
     let hasPaintScheduled = false
     let hasSlidesPaintScheduled = false
-    let touchStartIndex = 0
 
     const paint = () => {
       if (hasPaintScheduled) return
@@ -38,23 +37,6 @@
 
         hasPaintScheduled = false
       })
-    }
-
-    const getIndexFromScroll = () => {
-      const viewportCenter = slider.scrollTop + (slider.clientHeight / 2)
-      let nearestIndex = 0
-      let minDistance = Number.POSITIVE_INFINITY
-
-      slides.forEach((slide, index) => {
-        const center = slide.offsetTop + (slide.offsetHeight / 2)
-        const distance = Math.abs(center - viewportCenter)
-        if (distance < minDistance) {
-          minDistance = distance
-          nearestIndex = index
-        }
-      })
-
-      return nearestIndex
     }
 
     const goToIndex = (nextIndex, isSmooth = true) => {
@@ -99,23 +81,6 @@
       if (nextIndex < 0 || nextIndex === activeIndex) return
       goToIndex(nextIndex)
     }
-    const handleSliderScroll = () => {
-      const nextIndex = getIndexFromScroll()
-      const isInvalidIndex = nextIndex < 0 || nextIndex >= slides.length || nextIndex === activeIndex
-      if (isInvalidIndex) return
-      activeIndex = nextIndex
-      paint()
-    }
-    const handleTouchStart = () => {
-      touchStartIndex = getIndexFromScroll()
-    }
-    const handleTouchEnd = () => {
-      const rawIndex = getIndexFromScroll()
-      const minIndex = Math.max(0, touchStartIndex - 1)
-      const maxIndex = Math.min(slides.length - 1, touchStartIndex + 1)
-      const boundedIndex = Math.max(minIndex, Math.min(rawIndex, maxIndex))
-      goToIndex(boundedIndex)
-    }
     const handleCountrySelection = event => {
       const clickedButton = event.target.closest(`.Slider-button`)
       if (!clickedButton) return
@@ -130,6 +95,24 @@
     }
     const handleSliderIntersection = entries => {
       isSliderInViewport = entries.some(entry => entry.isIntersecting)
+    }
+    const handleFrameIntersection = entries => {
+      let bestIndex = -1
+      let bestRatio = 0
+
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        const index = slides.indexOf(entry.target)
+        if (index < 0) return
+        if (entry.intersectionRatio <= bestRatio) return
+
+        bestRatio = entry.intersectionRatio
+        bestIndex = index
+      })
+
+      if (bestIndex < 0 || bestIndex === activeIndex) return
+      activeIndex = bestIndex
+      paint()
     }
 
     // Trae los subtítulos de los paises del campo `titular` de "countries.json"
@@ -176,6 +159,12 @@
         threshold: 0.2
       })
       sliderObserver.observe(slider)
+
+      const frameObserver = new IntersectionObserver(handleFrameIntersection, {
+        root: slider,
+        threshold: [0.55, 0.75]
+      })
+      slides.forEach(slide => frameObserver.observe(slide))
     }
 
     dots.forEach((dot, index) => {
@@ -185,9 +174,6 @@
     window.addEventListener(`keydown`, handleKeydown)
     window.addEventListener(`wheel`, handleWheel, { passive: false })
     sliderRoot.addEventListener(`focusin`, handleFocusIn)
-    slider.addEventListener(`scroll`, handleSliderScroll)
-    slider.addEventListener(`touchstart`, handleTouchStart, { passive: true })
-    slider.addEventListener(`touchend`, handleTouchEnd, { passive: true })
     sliderRoot.addEventListener(`click`, handleCountrySelection)
 
     goToIndex(activeIndex, false)
