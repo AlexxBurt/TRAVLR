@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="TRAVLR: Destinos" />
+    <meta name="description" content="Agencia de viajes que se encarga de todo para que tú puedas disfrutar sin preocuparte por nada." />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://metatags.io/" />
+    <meta property="og:title" content="TRAVLR: Destinos" />
+    <meta property="og:description" content="Agencia de viajes que se encarga de todo para que tú puedas disfrutar sin preocuparte por nada." />
+    <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metatags.io/" />
+    <meta property="twitter:title" content="TRAVLR: Destinos" />
+        <meta property="twitter:description" content="Agencia de viajes que se encarga de todo para que tú puedas disfrutar sin preocuparte por nada." />
+        <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/styles.css">
+
+        <link rel="stylesheet" href="./css/header.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/footer.css">
+
+        <!-- JS -->
+        <script src="./js/main.js" defer></script>
+        <script src="./js/index.js" defer></script>
+
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/images/Favicon.png">
+
+        <title>TRAVLR: Destinos</title>
+    </head>
+    <body>
+
+    <!-- El Header lo traemos con JavaScript -->
+    <header class="Header"></header>
+
+    <main>
+
+        <h1 class="u-h1">Destinos para viajar</h1>
+        
+        <div class="Wrapper">        
+            <ul class="Wrapper-slider Slider">
+                <!-- Slides dinámicas de destinos que traemos con JavaScript 
+                     Las imágenes de fondo y los subtítulos vienen del JSON -->
+                <li class="Slider-frame Slider-frame--1">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=egipto" class="Slider-button u-primary" title="Tours de Egipto">Descubrir destino</a>
+                </li>
+                <li class="Slider-frame Slider-frame--2">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=zimbabue" class="Slider-button u-primary" title="Tours de Zimbabue">Descubrir destino</a>
+                </li>
+                <li class="Slider-frame Slider-frame--3">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=islandia" class="Slider-button u-primary" title="Tours de Islandia">Descubrir destino</a>
+                </li>
+                <li class="Slider-frame Slider-frame--4">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=austria" class="Slider-button u-primary" title="Tours de Austria">Descubrir destino</a>
+                </li>
+                <li class="Slider-frame Slider-frame--5">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=japon" class="Slider-button u-primary" title="Tours de Japón">Descubrir destino</a>
+                </li>
+                <li class="Slider-frame Slider-frame--6">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=vietnam" class="Slider-button u-primary" title="Tours de Vietnam">Descubrir destino</a>
+                </li>
+                <li class="Slider-frame Slider-frame--7">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=seychelles" class="Slider-button u-primary" title="Tours de Islas Seychelles">Descubrir destino</a>
+                </li>
+                <li class="Slider-frame Slider-frame--8">
+                    <h2 class="Slider-text"></h2>
+                    <a href="tours.html?pais=indonesia" class="Slider-button u-primary" title="Tours de Indonesia">Descubrir destino</a>
+                </li>
+            </ul>
+
+            <!-- Barra lateral de puntos para navegación entre los slides -->
+            <div class="Selector">
+                <div class="Selector-dot isActive" title="Egipto"></div>
+                <div class="Selector-dot" title="Zimbabwe"></div>
+                <div class="Selector-dot" title="Islandia"></div>
+                <div class="Selector-dot" title="Austria"></div>
+                <div class="Selector-dot" title="Japón"></div>
+                <div class="Selector-dot" title="Vietnam"></div>
+                <div class="Selector-dot" title="Seychelles"></div>
+                <div class="Selector-dot" title="Indonesia"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- El Footer lo traemos con JavaScript -->
+    <footer class="Footer"></footer>
+
+    </body>
+</html>

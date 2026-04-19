@@ -1,0 +1,339 @@
+.Wrapper{
+    background: url('../assets/images/passport.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat( 2 , 1fr );
+    gap: 2.5rem;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.Wrapper-col{
+    min-height: 100%;
+    background-color: var(--c-primary-10);
+    padding: 2.5rem;
+    border-radius: var(--br-square);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.Form{
+    min-height: fit-content;
+    align-self: start;
+}
+.Form-h2 , .Checkout-h2{
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+    color: var(--c-primary-75);
+    text-transform: uppercase;
+}
+.Form-presection{
+    display: none;
+}
+.Form-presection.isActive{
+    display: block;
+    display: flex;
+    justify-content: space-between;
+}
+.Form-number input{
+    width: 100%;
+    max-width: 5rem;
+    text-align: end;
+    justify-self: end;
+}
+.Form-input{
+    display: none;
+}
+.Form-input.isVisible{
+    display: block;
+}
+/* Cambia el color de las flechas selectoras y del icono del calendario*/
+::-webkit-inner-spin-button , ::-webkit-calendar-picker-indicator{
+     filter: invert(1);
+}
+
+
+.Form-button{
+    margin: 3rem 0 0 0;
+    justify-self: center;
+    display: none;
+}
+.Form-button.isVisible{
+    display: block;
+}
+.Checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    transform: translateX(33%);
+    pointer-events: none;
+    transition: opacity 2s ease , transform 2.5s ease;
+}
+.Checkout.isVisible{
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;    
+}
+.Checkout-info{
+    font-size: var(--fs-small);
+    color: var(--c-primary-50);
+    margin-top: -.625rem;
+}
+.Checkout-summary{
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+}
+.Checkout-h3{
+    font-size: var(--fs-regular);
+    font-weight: var(--fw-bold);
+    color: var(--c-primary-50);
+    text-transform: uppercase;
+    padding: .5rem;
+    margin: .5rem;
+    border-bottom: 1px solid var(--c-primary-50);
+}
+.Checkout-data{
+    padding: .5rem 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+    color: var(--c-primary-100);
+}
+.Checkout-span--price{
+    font-size: var(--fs-big);
+    color: var(--c-primary-75);
+}
+.Checkout-total{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+    color: var(--c-primary-100);
+    text-transform: uppercase;
+}
+.Checkout-button{
+    min-width: 100%;
+    padding: 1rem;
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+}
+
+.Popup-background{
+    display: none;
+}
+.Popup-background.isVisible{
+    width: 100dvw;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    background-color: var(--c-secondary-75);
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+}
+.Payment{
+    min-height: fit-content;
+    max-width: 45%;
+    background-color: var(--c-secondary-75);
+    padding: 4rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border: 2px solid var(--c-primary-25);
+    border-radius: var(--br-square);
+    color: var(--c-primary-75);
+    position: relative;
+}
+.Payment-svg{
+    height: 1.5rem;
+    position: absolute;
+    top: 5%;
+    left: 42%;
+    opacity: .75;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+.Payment-svg:hover{
+    opacity: .5;
+    scale: 1.05;
+}
+.Payment-title{
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+}
+.Payment-description{
+    font-size: var(--fs-regular);
+}
+.Payment-form{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0 0;
+    gap: .5rem;
+}
+/* Quita las flechas en el input-number del CVV */
+.Payment-form ::-webkit-inner-spin-button{
+    display: none;
+}
+.Payment-data{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr .5fr .5fr;
+    gap: 1rem;
+}
+.Payment-buttons{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0 0;
+}
+.Payment-cancel{
+    background-color: var(--c-primary-10);
+    border: 2px solid var(--c-primary-25);
+    text-transform: capitalize;
+}
+.Payment-cancel:hover{
+    scale: 1;
+    border: 2px solid transparent;
+    color: var(--c-primary-75);
+}
+.Payment ::selection{
+    color: var(--c-primary-25);
+}
+
+
+/* Responsive portatil */
+@media (min-width: 1600px){
+    .Form-presection.isActive{
+        justify-content: start;
+        gap: 1.5rem;
+    }
+    .Form-number input{
+        justify-self: start;
+    }
+}
+
+
+/* Responsive portatil */
+@media (max-width: 1328px){
+    .Wrapper-col{
+        padding: 1.5rem;
+    }
+    .Form-presection.isActive{
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+    .Form-number input{
+        justify-self: end;
+    }
+    /* Popup */
+    .Payment-container{
+        max-width: 50%;
+        padding: 2rem;
+    }
+    .Payment-svg{
+        height: 1.25rem;
+    }
+    .Payment-form , .Payment-buttons{
+        margin: 1rem 0 0;
+    }
+}
+
+
+/* Responsive Tablet */
+@media (max-width: 1024px){
+    .Wrapper{
+        grid-template-columns: 1fr;
+    }
+    /* Popup */
+    .Payment-container{
+        padding: 2rem;
+     }
+    .Payment-data{
+        gap: .5rem;
+    }
+}
+
+@media (max-width: 768px){
+    .Wrapper{
+        gap: 1rem;
+    }
+    .Form-presection.isActive{
+        justify-content: start;
+        gap: 1rem;
+    }
+    .Form-number input{
+        min-width: 100%;
+    }
+    .Form-button{
+        margin: 1.5rem 0 0 0;
+    }
+    .Checkout{
+        padding: 1.5rem;
+    }
+
+   /* Popup */
+    .Payment-container{
+        max-width: 66%;
+        padding: 1.5rem;
+    }
+    .Payment-svg , .Payment-title{
+        display: none;
+    }
+    .Payment-form label{
+        color: var(--c-primary-75);
+    }
+    .Payment-form{
+        margin: 1.5rem 0 0;
+        gap: .25rem;
+    }
+    .Payment-data{
+        grid-template-columns: repeat( 2 , 1fr );
+    }
+    .Payment-group--cardnumber{
+        grid-column: span 2;
+    }
+    .Payment-buttons{
+        margin: .5rem 0 0;
+    }
+}
+
+
+/* Responsive Móvil */
+@media (max-width: 480px){
+    .Wrapper{
+        padding: 12dvh 1rem;
+        gap: 1rem;
+    }
+    .Form{
+        gap: initial;
+    }
+    .Form-presection.isActive{
+        justify-content: space-between;
+    }
+
+    /* Popip */
+    .Payment-container{
+        max-width: 80%;
+        padding: 1rem;
+    }
+    .Payment-form{
+        margin: .5rem 0 0;
+    }
+    .Payment-buttons{
+        flex-direction: column;
+    }
+}

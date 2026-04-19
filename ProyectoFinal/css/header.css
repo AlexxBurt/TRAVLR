@@ -1,0 +1,94 @@
+.Header{
+    position: fixed;
+    top: 5%;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+.Header-ul{
+    max-width: 90rem;
+    margin: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.Header-li{
+    color: var(--c-primary-50);
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.Header-logo{
+    color: var(--c-primary-75);
+    font-size: var(--fs-extrabig);
+}
+.Header-a{
+    padding: .625rem 1.25rem;
+    cursor: pointer;
+    transition: color .4s ease;
+}
+/* Banco semitransparente en páginas ya visitadas */
+.Header-a:hover{
+    color: var(--c-primary-75);
+}
+/* Blanco completo si está en esa página */
+.Header-a.isActive{
+    color: var(--c-primary-100);
+}
+/* "Desactivamos" estilo al hacer hover */
+.Header-a.isActive:hover{
+    text-decoration: none;
+    cursor: auto;
+}
+.Header-a.isVisible{
+    color: var(--c-primary-100);
+}
+.Header-a.Header-a.isVisible:hover{
+    color: var(--c-primary-100);
+}
+
+
+
+/* Responsive Tablet */
+@media (max-width: 1024px){
+    
+}
+
+
+/* Responsive Pantallas pequeñas */
+@media (max-width: 768px){
+    .Header-ul{
+        justify-content: space-around;
+    }
+    .Header-li:nth-child(3n){
+        display: none;
+    }
+}
+
+
+
+/* Responsive Móvil */
+@media (max-width: 480px){
+    .Header{
+        width: 92%;
+        margin: auto;
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    .Header-nav{
+        width: 100%;
+    }
+    .Header-ul{
+        justify-content: space-between;
+    }
+    
+    .Header-a{
+        padding: 1rem;
+        border-radius: var(--br-round);
+        padding: 0;
+    }
+}

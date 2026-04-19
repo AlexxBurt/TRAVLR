@@ -1,0 +1,91 @@
+.Wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.Slider{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: auto;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.Slider-frame{
+    min-height: 100dvh;
+    background-color: grey;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    gap: 3rem;
+    /* Cambiar este "all" rompe el efecto */
+    transition: all 1s cubic-bezier( .62, .24, .33, 1 );
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    position: relative;
+}
+
+.Slider-text{
+    color: var(--c-primary-100);
+    font-size: var(--fs-huge);
+    text-align: center;
+    text-wrap: balance;
+    position: fixed;
+    top: 62%;
+}
+.Slider-button{
+    max-width: fit-content;
+    position: fixed;
+    top: 72%
+}
+
+
+.Selector{
+    width: fit-content;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: calc( 50vh - 10rem );
+    right: 8%;
+    /* z-index: 1; */
+}
+.Selector-dot{
+    width: .75rem;
+    min-height: .75rem;
+    background-color: var(--c-primary-25);
+    border-radius: var(--br-round);
+    transition: background-color .5s ease;
+    cursor: pointer;
+}
+.Selector-dot:hover{
+    background-color: var(--c-primary-100);
+}
+.Selector-dot.isActive{
+    scale: 1.25;
+    background-color: var(--c-primary-100);
+}
+
+
+/* Responsive portatil */
+@media (max-width: 1328px){
+    .Slider-frame{
+        padding: 7%;
+    }
+}
+
+/* Responsive Móvil */
+@media (max-width: 480px){
+    .Slider-text{
+        width: 80%;
+        top: 55%;
+    }
+    .Slider-button{
+        top: 70%
+    }
+}

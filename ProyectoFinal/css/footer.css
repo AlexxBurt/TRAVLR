@@ -1,0 +1,210 @@
+.Footer{
+    width: 100dvw;
+    min-height: fit-content;
+    padding: .5rem 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: -5%;
+    z-index: 2;
+    transition: bottom .6s ease , background 1s ease ;
+}
+.Footer.isVisible{
+    bottom: 0;
+    background: linear-gradient(180deg, transparent, var(--c-secondary-50));
+}
+/* svg chevron doble de Cerrar */
+.Footer-svg{
+    width: fit-content;
+    margin: 0 auto;
+    color: var(--c-primary-100);
+    padding: 1rem;
+    cursor: pointer;
+    transition: color .6s ease , transform .6s ease;
+}
+.Footer-svg:hover{
+    color: var(--c-primary-75);
+    transform: translateY(-.5rem);
+}
+/* Animación de dar la vuelta al estar abierto el footer */
+.Footer.isVisible .Footer-svg{
+    transform: rotate(180deg);
+}
+/* Animación de bajarlo un poco al hacer hover */
+.Footer.isVisible .Footer-svg:hover{
+    transform: rotate(180deg) translateY(-.5rem);
+}
+.Footer-links{
+    width: fit-content;
+    margin: 0 auto;
+    color: var(--c-primary-75);
+}
+.Footer-ul{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.Footer-li:last-child{
+    margin-left: 3rem;
+}
+.Footer-a{
+    font-size: var(--fs-regular);
+    font-weight: var(--fw-bold);
+    color: var(--c-primary-50);
+    text-transform: uppercase;
+    padding: .625rem 1.25rem;
+    transition: color .4s ease;
+    cursor: pointer;
+}
+.Footer-a--secondary{
+    font-weight: var(--fw-regular);
+    text-transform: none;
+}
+.Footer-a:hover{
+    color: var(--c-primary-100);
+}
+
+/* Capa de fondo negra al abrir el popup de textos legales */
+.Footer-background{
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+.Footer-background.isVisible{
+    width: 100dvw;
+    min-height: 100dvh;
+    background-color: var(--c-secondary-75);
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+.Footer-popup{
+    min-height: 70dvh;
+    width: 66%;
+    background-color: var(--c-secondary-100);
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: var(--br-square);
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 2rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    box-shadow: var(--bs-box-small);
+}
+/* svg de cerrar popup */
+.Popup-svg{
+    width: fit-content;
+    height: 1.5rem;
+    position: absolute;
+    top: 2%;
+    left: 96.5%;
+    opacity: .75;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+.Popup-svg:hover{
+    opacity: .5;
+    scale: 1.05;
+}
+.Popup-header{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem 0 0;
+    border-right: 1px solid var(--c-primary-50);
+}
+.Popup-tab{
+    padding: .5rem 1rem;
+    border-radius: var(--br-square);
+    font-size: var(--fs-big);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    color: var(--c-primary-50);
+    text-wrap: nowrap;
+    cursor: pointer;
+    transition: color .4s ease;
+}
+.Popup-tab:hover{
+    color: var(--c-primary-75);
+}
+.Popup-tab.isActive{
+    background-color: var(--c-primary-25);
+    color: var(--c-primary-50);
+    box-shadow: var(--bs-btn);
+}
+.Popup-info{
+    display: none;
+    transform: translateY(10%);
+}
+.Popup-info.isVisible{
+    max-width: 95%;
+    margin: 1.5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transform: translateY(0);
+}
+.Popup-info h2{
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+}
+.Popup-info h3{
+    color: var(--c-primary-75);
+    font-weight: var(--fw-bold);
+}
+.Popup-info li{
+    margin: 1rem 0 0 0;
+}
+.Popup-info a{
+    color: var(--c-primary-50);
+    transition: color .5s ease , text-decoration .3s ease;
+}
+.Popup-info a:hover{
+    color: var(--c-primary-100);
+    text-decoration: underline;
+}
+.Popup-info--legal ul{
+    display: flex;
+    gap: 3rem;
+}
+
+/* Fondo semitransparente blanco para mejorar legibilidad */
+::selection{
+    background-color: var(--c-primary-25);
+}
+
+
+/* Responsive para móvil */
+@media (max-width: 768px){
+    .Footer-a{
+        padding: .25rem 1rem;
+    }
+}
+
+
+    /* Responsive para móvil */
+@media (max-width: 480px){
+    .Footer{
+        bottom: -4%;
+        padding: .5rem 0;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+    }
+    .Footer.isVisible{
+        background: linear-gradient(180deg, transparent, var(--c-secondary-75));
+        bottom: 0;
+    }
+    .Footer-li:last-child{
+        margin-left: 1rem;
+    }
+}

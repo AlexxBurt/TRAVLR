@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="TRAVLR: Contacto" />
+        <meta name="description" content="Ponte en contacto con nosotros y desde TRAVLR resolveremos tus dudas en un plazo inferior a 24 horas." />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://metatags.io/" />
+        <meta property="og:title" content="TRAVLR: Contacto" />
+        <meta property="og:description" content="Ponte en contacto con nosotros y desde TRAVLR resolveremos tus dudas en un plazo inferior a 24 horas." />
+        <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+        <!-- X (Twitter) -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://metatags.io/" />
+        <meta property="twitter:title" content="TRAVLR: Contacto" />
+        <meta property="twitter:description" content="Ponte en contacto con nosotros y desde TRAVLR resolveremos tus dudas en un plazo inferior a 24 horas." />
+        <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <link rel="stylesheet" href="css/contacto.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/footer.css">
+
+        <!-- JS -->
+        <script src="./js/main.js" defer></script>
+        <script src="./js/contacto.js" defer></script>
+
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/images/Favicon.png">
+
+        <title>TRAVLR: Contacto</title>
+    </head>
+    <body>
+    <!-- Traemos el Header con JavaScript -->
+    <header class="Header"></header>
+
+    <main>
+        <h1 class="u-h1">Contacto</h1>
+        <div class="Wrapper">
+            <!-- Formulario de contacto -->
+            <div class="Contact">
+                <h2 class="Contact-h2">¿Tienes dudas?</h2>
+                <span class="Contact-span">Contáctanos a través del formulario y recibirás nuestra respuesta en un máximo de 24 horas.</span>
+                <form class="Contact-form Form" action="#" method="post">
+                    <!-- Inputs de rellenar -->
+                    <label for="name">Nombre y apellidos <span class="Form-symbol">*</span></label>
+                    <input type="text" class="Form-input" id="name" name="name" placeholder="Tu nombre completo" required>
+                    <div class="Form-columns">
+                        <div class="Form-group">
+                            <label for="email">Email <span class="Form-symbol">*</span></label>
+                            <input type="email" class="Form-input" id="email" name="email" placeholder="ejemplo@email.com" required>
+                        </div>
+                        <div class="Form-group">
+                            <label for="telephone">Teléfono <span class="Form-symbol">*</span></label>
+                            <input type="tel" class="Form-input" id="telephone" name="telephone" placeholder="Ej: 601 234 567" required>
+                        </div>
+                    </div>
+                    <label for="message">Mensaje <span class="Form-symbol">*</span></label>
+                    <textarea class="Form-input" id="message" name="message" rows="3" placeholder="Escribe aquí tu mensaje, pregunta o sugerencia..." required></textarea>
+                    <!-- Input del rgpd -->
+                    <div class="Checkbox">
+                        <input type="checkbox" class="Form-input" id="rgpd" name="rgpd" required>
+                        <label for="rgpd" class="Form-rgpd">Acepto la política de privacidad de TRAVLR.<span class="Form-symbol">*</span></label>
+                    </div>
+                    <!-- Input de botón Enviar -->
+                    <button type="submit" class="Form-button u-primary" title="Enviar">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Traemos el Footer con JavaScript -->
+    <footer class="Footer"></footer>
+
+    
+    </body>
+</html>

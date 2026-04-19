@@ -1,0 +1,172 @@
+{
+    "hotels": [
+        {
+            "country": "Egipto",
+            "name": "Marriott Mena House",
+            "description": "Frente a las pirámides, con arquitectura histórica, jardines privados y servicio de lujo excepcional.",
+            "backgroundImage": "../assets/images/egipto-hotel1.webp",
+            "roomRate": "850€"
+        },
+        {
+            "country": "Egipto",
+            "name": "Four Seasons Sharm El Sheikh",
+            "description": "Villas privadas, acceso directo al Mar Rojo y privacidad total con atención personalizada de alta gama.",
+            "backgroundImage": "../assets/images/egipto-hotel2.jpg",
+            "roomRate": "990€"
+        },
+        {
+            "country": "Egipto",
+            "name": "The Oberoi Zahra",
+            "description": "Hotel flotante sobre el Nilo con experiencias exclusivas, gastronomía premium y vistas únicas a la ribera.",
+            "backgroundImage": "../assets/images/egipto-hotel3.webp",
+            "roomRate": "1.087€"
+        },
+        {
+            "country": "Zimbabwe",
+            "name": "Victoria Falls Hotel",
+            "description": "Hotel histórico con vistas a las cataratas, jardines privados y servicio de lujo que combina tradición y exclusividad.",
+            "backgroundImage": "../assets/images/zimbabue-hotel1.webp",
+            "roomRate": "947€"
+        },
+        {
+            "country": "Zimbabwe",
+            "name": "The Royal Livingstone",
+            "description": "Lodge frente al río Zambeze con suites privadas, safaris personalizados y atención exclusiva.",
+            "backgroundImage": "../assets/images/zimbabue-hotel2.webp",
+            "roomRate": "851€"
+        },
+        {
+            "country": "Zimbabwe",
+            "name": "Imbabala Safari Lodge",
+            "description": "Alojamiento de lujo en plena sabana, combinado con safaris privados y experiencias únicas de naturaleza.",
+            "backgroundImage": "../assets/images/zimbabue-hotel3.webp",
+            "roomRate": "1.024€"
+        },
+        {
+            "country": "Islandia",
+            "name": "ION Adventure Hotel",
+            "description": "Hotel de lujo rodeado de paisajes volcánicos y glaciares, con diseño exclusivo y experiencias personalizadas.",
+            "backgroundImage": "../assets/images/iceland-hotel1.webp",
+            "roomRate": "735€"
+        },
+        {
+            "country": "Islandia",
+            "name": "Deplar Farm",
+            "description": "Lodge privado en zona remota con vistas a fiordos y glaciares, ideal para exploraciones personalizadas.",
+            "backgroundImage": "../assets/images/iceland-hotel2.webp",
+            "roomRate": "996€"
+        },
+        {
+            "country": "Islandia",
+            "name": "Hotel Rangá",
+            "description": "Hotel boutique de lujo con observación de auroras y excursiones exclusivas a paisajes naturales.",
+            "backgroundImage": "../assets/images/iceland-hotel3.webp",
+            "roomRate": "890€"
+        },
+        {
+            "country": "Austria",
+            "name": "Hotel Sacher Wien",
+            "description": "Hotel emblemático en Viena, con lujo clásico, suites elegantes y servicios personalizados.",
+            "backgroundImage": "../assets/images/austria-hotel1.webp",
+            "roomRate": "783€"
+        },
+        {
+            "country": "Austria",
+            "name": "Interalpen-Hotel Tyrol",
+            "description": "Refugio alpino de lujo en Tirol, con vistas exclusivas a las montañas y servicios premium.",
+            "backgroundImage": "../assets/images/austria-hotel2.webp",
+            "roomRate": "916€"
+        },
+        {
+            "country": "Austria",
+            "name": "Schloss Dürnstein",
+            "description": "Castillo con historia, vistas al Danubio y habitaciones de lujo con encanto auténtico.",
+            "backgroundImage": "../assets/images/austria-hotel3.webp",
+            "roomRate": "843€"
+        },
+        {
+            "country": "Japón",
+            "name": "Aman Tokyo",
+            "description": "Hotel de lujo urbano con vistas a Tokio, diseño minimalista y atención exclusiva.",
+            "backgroundImage": "../assets/images/japan-hotel1.webp",
+            "roomRate": "1.148€"
+        },
+        {
+            "country": "Japón",
+            "name": "Hoshinoya Kyoto",
+            "description": "Resort de lujo en Kioto con acceso privado a templos y jardines, combinando tradición y exclusividad.",
+            "backgroundImage": "../assets/images/japan-hotel2.webp",
+            "roomRate": "1.009€"
+        },
+        {
+            "country": "Japón",
+            "name": "The Ritz-Carlton Osaka",
+            "description": "Hotel de lujo urbano, con servicio premium, vistas panorámicas y ubicación estratégica.",
+            "backgroundImage": "../assets/images/japan-hotel3.webp",
+            "roomRate": "1.075€"
+        },
+        {
+            "country": "Vietnam",
+            "name": "Azerai La Residence Hue",
+            "description": "Hotel boutique de lujo junto al río Perfume, con diseño colonial y experiencias culturales exclusivas.",
+            "backgroundImage": "../assets/images/vietnam-hotel1.webp",
+            "roomRate": "822€"
+        },
+        {
+            "country": "Vietnam",
+            "name": "Six Senses Ninh Van Bay",
+            "description": "Resort privado en bahía de ensueño, villas con piscina y experiencias exclusivas en la naturaleza.",
+            "backgroundImage": "../assets/images/vietnam-hotel2.webp",
+            "roomRate": "972€"
+        },
+        {
+            "country": "Vietnam",
+            "name": "The Nam Hai",
+            "description": "Resort de lujo con villas privadas frente a la playa y servicio personalizado premium.",
+            "backgroundImage": "../assets/images/vietnam-hotel3.webp",
+            "roomRate": "1.036€"
+        },
+        {
+            "country": "Islas Seychelles",
+            "name": "North Island",
+            "description": "Isla privada de lujo, playas exclusivas y alojamiento con máxima privacidad.",
+            "backgroundImage": "../assets/images/seychelles-hotel1.webp",
+            "roomRate": "2.483€"
+        },
+        {
+            "country": "Islas Seychelles",
+            "name": "Six Senses Zil Pasyon",
+            "description": "Resort en isla privada con villas de lujo, experiencias de naturaleza y servicios personalizados.",
+            "backgroundImage": "../assets/images/seychelles-hotel2.webp",
+            "roomRate": "2.258€"
+        },
+        {
+            "country": "Islas Seychelles",
+            "name": "Four Seasons Desroches",
+            "description": "Resort exclusivo en isla remota, con suites privadas y actividades de exploración natural.",
+            "backgroundImage": "../assets/images/seychelles-hotel3.webp",
+            "roomRate": "2.165€"
+        },
+        {
+            "country": "Indonesia",
+            "name": "Four Seasons Bali at Sayan",
+            "description": "Villas privadas entre arrozales y selva tropical, con diseño exclusivo y experiencias culturales personalizadas.",
+            "backgroundImage": "../assets/images/indonesia-hotel1.webp",
+            "roomRate": "1.219€"
+        },
+        {
+            "country": "Indonesia",
+            "name": "Amandari Ubud",
+            "description": "Resort de lujo con villas tipo tradicional balinesa, vistas al río Ayung y atención personalizada de alto nivel.",
+            "backgroundImage": "../assets/images/indonesia-hotel2.webp",
+            "roomRate": "1.137€"
+        },
+        {
+            "country": "Indonesia",
+            "name": "The Legian Bali",
+            "description": "Hotel frente a la playa con suites de lujo, privacidad absoluta y servicios exclusivos de bienestar.",
+            "backgroundImage": "../assets/images/indonesia-hotel3.webp",
+            "roomRate": "1.289€"
+        }
+    ]
+}

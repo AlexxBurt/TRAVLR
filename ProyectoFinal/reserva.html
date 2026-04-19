@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="TRAVLR: Reserva" />
+        <meta name="description" content="Completa tu reserva ahora y prepárate para vivir el viaje de tus sueños con todos los lujos incluidos para garantizar tu máxima comodidad." />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://metatags.io/" />
+        <meta property="og:title" content="TRAVLR: Reserva" />
+        <meta property="og:description" content="Completa tu reserva ahora y prepárate para vivir el viaje de tus sueños con todos los lujos incluidos para garantizar tu máxima comodidad." />
+        <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+        <!-- X (Twitter) -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://metatags.io/" />
+        <meta property="twitter:title" content="TRAVLR: Reserva" />
+        <meta property="twitter:description" content="Completa tu reserva ahora y prepárate para vivir el viaje de tus sueños con todos los lujos incluidos para garantizar tu máxima comodidad." />
+        <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/reserva.css">
+        <link rel="stylesheet" href="css/footer.css">
+
+        <!-- JS -->
+        <script src="./js/main.js" defer></script>
+        <script src="./js/reserva.js" defer></script>
+
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/images/Favicon.png">
+
+        <title>TRAVLR: Reserva</title>
+    </head>
+    <body>
+    
+    <!-- El Header lo traemos usando JavaScript -->
+    <header class="Header"></header>
+
+    <main>
+        <div class="Wrapper">
+            <h1 class="u-h1">Confirma tu reserva</h1>
+            <div class="Wrapper-col Form">
+                <!-- Formulario de info de los pasajeros -->
+                <h2 class="Form-h2">Tus datos</h2>
+                <form action="#" method="get">
+                    <fieldset class="Form-presection isActive">
+                        <div class="Form-date">
+                            <label for="date">Elige una fecha</label>
+                            <input type="date" name="date" id="date" required>
+                        </div>
+                        <div class="Form-number">
+                            <label for="number-passengers">Pasajeros</label>
+                            <input type="number" value="1" name="number-passengers" id="number-passengers" min="1" max="4">
+                        </div>
+                    <!-- Inputs que se van mostrando en función del número seleccionado anteriormente -->
+                    </fieldset>
+                        <label for="name">Información de los pasajeros</label>
+                        <input type="text" class="Form-input" name="name" id="name" placeholder="Nombre y apellidos - Pasajero 1" required>
+                        <input type="text" class="Form-input" name="name-2" id="name-2" placeholder="Nombre y apellidos - Pasajero 2">
+                        <input type="text" class="Form-input" name="name-3" id="name-3" placeholder="Nombre y apellidos - Pasajero 3">
+                        <input type="text" class="Form-input" name="name-4" id="name-4" placeholder="Nombre y apellidos - Pasajero 4">
+                    <!-- Botón oculto que aparece al tener todos los campos rellenos -->
+                    <button type="button" class="Form-button u-secondary" title="Confirmar">Confirmar</button>
+                </form>
+            </div>
+            <div class="Wrapper-col Checkout">
+                <h2 class="Checkout-h2" title="* Precios por persona y noche; el importe total se calcula según el número de viajeros.">Tu reserva <span class="Checkout-info">*</span></h2>
+                <!-- Información final del carrito y precios -->
+                <div class="Checkout-summary">
+                    <div class="Checkout-field">
+                        <h3 class="Checkout-h3">Vuelo con destino:</h3>
+                        <div class="Checkout-data">
+                            <span class="Checkout-span">${Destino}</span>
+                            <span class="Checkout-span--price">${Precio}</span>
+                        </div>
+                    </div>
+                    <div class="Checkout-field">
+                        <h3 class="Checkout-h3">Tours añadidos:</h3>
+                        <div class="Checkout-data">
+                            <span class="Checkout-span">${Tour-1}</span>
+                            <span class="Checkout-span--price">${Precio}</span>
+                        </div>
+                        <!-- Campos extra opcionales que se muestran en función del número de pasajeros -->
+                        <div class="Checkout-data">
+                            <span class="Checkout-span">${Tour-2}</span>
+                            <span class="Checkout-span--price">${Precio}</span>
+                        </div>
+                        <div class="Checkout-data">
+                            <span class="Checkout-span">${Tour-3}</span>
+                            <span class="Checkout-span--price">${Precio}</span>
+                        </div>
+                    </div>
+                    <div class="Checkout-field">
+                        <h3 class="Checkout-h3">Hotel elegido:</h3>
+                        <div class="Checkout-data">
+                            <span class="Checkout-span">${Hotel}</span>
+                            <span class="Checkout-span--price">${Precio}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carrito dinámico con las selecciones de las páginas anteriores -->
+                <div class="Checkout-total">
+                    <span>Total</span>
+                    <span>${Precio total}</span>
+                </div>
+                <button type="button" class="Checkout-button u-primary" title="Finalizar compra">Finalizar compra</button>
+            </div>
+        </div>
+
+        <!-- Popup de pasarela de pago falsa -->
+        <div class="Popup-background">
+            <div class="Popup-background Payment">
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="Payment-svg" width="80" height="80" viewBox="0 0 24 24"><rect width="24" height="24" fill="none" />
+                    <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m7 7l10 10M7 17L17 7" />
+                </svg>
+
+                <span class="Payment-title">Método de pago</span>
+                <span class="Payment-description">Introduzca el email donde quiera recibir sus billetes y la tarjeta con la que desee realizar el pago.</span>
+                <form action="#" method="get" class="Payment-form">
+                    <label for="emai">Correo electrónico</label>
+                    <input type="email" class="Payment-input" name="emai" id="emai" placeholder="ejemplo@email.com" required>
+                    <label for="cardname">Titular de la tarjeta</label>
+                    <input type="text" class="Payment-input" name="cardname" id="cardname" placeholder="Nombre completo del titular" required>
+                    <fieldset class="Payment-data">
+                        <div class="Payment-group Payment-group--cardnumber">
+                            <label for="cardnumber">Número de la tarjeta</label>
+                            <input type="number" class="Payment-input" name="cardnumber" id="cardnumber" placeholder="0000 0000 0000 0000" required>
+                        </div>
+                        <div class="Payment-group ">
+                            <label for="carddate">Validez</label>
+                            <input type="text" class="Payment-input" name="carddate" id="carddate" placeholder="mm/aa" maxlength="5" required>
+                        </div>
+                        <div class="Payment-group">
+                            <label for="cardcvv">CVV</label>
+                            <input type="number" class="Payment-input" name="cardcvv" id="cardcvv" placeholder="000" required>
+                        </div>
+                    </fieldset>
+                    <div class="Payment-buttons">
+                        <button type="button" class="Payment-cancel u-primary" title="Cancelar">Cancelar</button>
+                        <button type="submit" class="Payment-submit u-primary" title="Realizar pago">Realizar pago</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- El Footer lo traemos usando JavaScript -->
+    <footer class="Footer"></footer>
+
+</body>
+</html>

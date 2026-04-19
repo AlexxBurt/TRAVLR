@@ -1,0 +1,68 @@
+{
+    "countries": {
+        "Egipto": {
+            "titular": "Un lugar que trasciende en el tiempo",
+            "url": "/pais?pais=egipto",
+            "backgroundImage": "../assets/images/egipto.webp",
+            "backgroundImageTablet": "../assets/images/egipto-tablet.webp",
+            "backgroundImageMobile": "../assets/images/egipto-mobile.webp",
+            "tripPrice": "635€"
+        },
+        "Zimbabue": {
+            "titular": "Naturaleza libre en su forma más exclusiva",
+            "url": "/pais?pais=zimbabue",
+            "backgroundImage": "../assets/images/zimbabue.webp",
+            "backgroundImageTablet": "../assets/images/zimbabue-tablet.webp",
+            "backgroundImageMobile": "../assets/images/zimbabue-mobile.webp",
+            "tripPrice": "1.351€"
+        },
+        "Islandia": {
+            "titular": "Maravillas de hielo en los confines del mundo",
+            "url": "/pais?pais=islandia",
+            "backgroundImage": "../assets/images/islandia.webp",
+            "backgroundImageTablet": "../assets/images/islandia.webp",
+            "backgroundImageMobile": "../assets/images/islandia-mobile.webp",
+            "tripPrice": "452€"
+        },
+        "Austria": {
+            "titular": "Elegancia inmutable tallada en los Alpes",
+            "url": "/pais?pais=austria",
+            "backgroundImage": "../assets/images/austria.webp",
+            "backgroundImageTablet": "../assets/images/austria-tablet.webp",
+            "backgroundImageMobile": "../assets/images/austria-mobile.webp",
+            "tripPrice": "509€"
+        },
+        "Japón": {
+            "titular": "Cultura refinada en el corazón de la tradición",
+            "url": "/pais?pais=japon",
+            "backgroundImage": "../assets/images/japan.webp",
+            "backgroundImageTablet": "../assets/images/japon-tablet.webp",
+            "backgroundImageMobile": "../assets/images/japan-mobile.webp",
+            "tripPrice": "979€"
+        },
+        "Vietnam": {
+            "titular": "Dinastías perdidas de civilizaciones milenarias",
+            "url": "/pais?pais=vietnam",
+            "backgroundImage": "../assets/images/vietnam.webp",
+            "backgroundImageTablet": "../assets/images/vietnam-tablet.webp",
+            "backgroundImageMobile": "../assets/images/vietnam-mobile.webp",
+            "tripPrice": "772€"
+        },
+        "Islas Seychelles": {
+            "titular": "Armonía y tranquilidad en un paraíso privado",
+            "url": "/pais?pais=seychelles",
+            "backgroundImage": "../assets/images/seychelles.webp",
+            "backgroundImageTablet": "../assets/images/seychelles-tablet.webp",
+            "backgroundImageMobile": "../assets/images/seychelles-mobile.webp",
+            "tripPrice": "813€"
+        },
+        "Indonesia": {
+            "titular": "Misticismo ancestral en un refugio único",
+            "url": "/pais?pais=indonesia",
+            "backgroundImage": "../assets/images/indonesia.webp",
+            "backgroundImageTablet": "../assets/images/indonesia-tablet.webp",
+            "backgroundImageMobile": "../assets/images/indonesia-mobile.webp",
+            "tripPrice": "1.147€"
+        }
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="TRAVLR: Hoteles" />
+        <meta name="description" content="Descubre los mejores hoteles en los que poder disfrutar de tu experiencia. Máxima exclusividad y lujo garantizados." />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://metatags.io/" />
+        <meta property="og:title" content="TRAVLR: Hoteles" />
+        <meta property="og:description" content="Descubre los mejores hoteles en los que poder disfrutar de tu experiencia. Máxima exclusividad y lujo garantizados." />
+        <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+        <!-- X (Twitter) -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://metatags.io/" />
+        <meta property="twitter:title" content="TRAVLR: Hoteles" />
+        <meta property="twitter:description" content="Descubre los mejores hoteles en los que poder disfrutar de tu experiencia. Máxima exclusividad y lujo garantizados." />
+        <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/hoteles.css">
+        <link rel="stylesheet" href="css/footer.css">
+
+        <!-- JS -->
+        <script src="./js/main.js" defer></script>
+        <script src="./js/hoteles.js" defer></script>
+
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/images/Favicon.png">
+
+        <title>TRAVLR: Hoteles</title>
+    </head>
+    <body>
+        <!-- El Header lo traemos usando JavaScript -->
+        <header class="Header"></header>
+
+        <main>
+            <h1 class="u-h1">Selecciona tu hotel</h1>
+            <div class="Wrapper">
+                <div class="Wrapper-content">
+                    <!-- Acordeón con las opciones de selección -->
+                    <ul class="Wrapper-accordion Accordion">
+                        <li class="Accordion-option">
+                            <h2 class="Accordion-h2"></h2>
+                            <p class="Accordion-p"></p>
+                            <button class="Accordion-button u-primary" title="Seleccionar alojamiento">Seleccionar alojamiento</button>
+                        </li>
+                        <li class="Accordion-option isActive">
+                            <h2 class="Accordion-h2 isActive"></h2>
+                            <p class="Accordion-p isVisible">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum in vitae quod ducimus ut accusantium sapiente maiores architecto facere perspiciatis, iure possimus, quaerat quia consectetur?</p>
+                            <button class="Accordion-button u-primary isVisible" title="Seleccionar alojamiento">Seleccionar alojamiento</button>
+                        </li>
+                        <li class="Accordion-option">
+                            <h2 class="Accordion-h2"></h2>
+                            <p class="Accordion-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum in vitae quod ducimus ut accusantium sapiente maiores architecto facere perspiciatis, iure possimus, quaerat quia consectetur?</p>
+                            <button class="Accordion-button u-primary" title="Seleccionar alojamiento">Seleccionar alojamiento</button>
+                        </li>
+                    </ul>
+                    <!-- Enlace a la del Checkout -->
+                    <a href="reserva.html" class="Wrapper-next u-secondary" title="Ir a reserva">Siguiente</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- El Footer lo traemos usando JavaScript -->
+        <footer class="Footer"></footer>
+
+    </body>
+</html>

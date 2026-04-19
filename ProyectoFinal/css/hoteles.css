@@ -1,0 +1,122 @@
+.Wrapper{
+    display: grid;
+    grid-template-columns: repeat( 2 , 1fr );
+}
+.Wrapper-content{
+    grid-column: 2;
+    max-height: fit-content;
+    background-color: var(--c-secondary-50);
+    padding: 2.5rem;
+    gap: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: var(--br-square);
+    backdrop-filter: blur(10px);
+}
+.Accordion{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .625rem;
+    font-size: var(--fs-regular);
+}
+.Accordion-option{
+    max-height: 2.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    padding: 0 .5rem 1.5rem 0;
+    gap: .75rem;
+    color: var(--c-primary-50);
+    overflow: hidden;
+    transition: max-height 1s ease , color 1s ease , border-bottom 1s ease;
+}
+.Accordion-option.isActive{
+    max-height: fit-content;
+    color: var(--c-primary-100);
+    border-bottom: 2px solid var(--c-primary-50);
+}
+.Accordion-h2{
+    width: 100%;
+    padding: .5rem .5rem 1rem;
+    font-weight: var(--fw-bold);
+    border-bottom: 2px solid var(--c-primary-50);
+    text-transform: uppercase;
+    flex-grow: 1;
+    cursor: pointer;
+    transition: color .3s ease;
+}
+.Accordion-h2:hover{
+    color: var(--c-primary-75);
+}
+.Accordion-h2.isActive{
+    border-bottom: 1px solid var(--c-primary-100);
+}
+.Accordion-p{
+    padding: .25rem 0 1.5rem 2rem;
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: opacity 1s ease-out , transform 1s ease;
+}
+.Accordion-p.isVisible{
+    opacity: 1;
+    transform: translateY(0);
+}
+.Accordion-button{
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: opacity 1s ease-out , transform 1s ease;
+}
+.Accordion-button.isVisible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* Responsive pantallas grandes */
+@media (min-width: 1600px){
+    .Wrapper-content{
+        max-width: 40rem;
+    }
+}
+
+
+/* Responsive pantallas pequeñas */
+@media (max-width: 960px){
+    .Wrapper{
+        grid-template-columns: 1fr;
+        padding: 16dvh 6dvw;
+    }
+}
+
+
+/* Responsive Tablet */
+@media (max-width: 768px){
+    .Wrapper{
+        padding: 14dvh 6dvw;
+    }
+    .Wrapper-content{
+        max-width: 66%;
+        max-height: fit-content;
+        background-color: var(--c-secondary-25);
+        padding: 2rem;
+        gap: 2.5rem;
+        justify-self: end;
+        backdrop-filter: blur(5px);
+    }
+}
+
+
+/* Responsive Móvil */
+@media (max-width: 480px){
+    .Wrapper{
+        padding: 12vh 1.25rem;
+    }
+    .Wrapper-content{
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+        gap: 1rem;
+    }
+}

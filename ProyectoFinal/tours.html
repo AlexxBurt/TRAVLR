@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="TRAVLR: Tours" />
+        <meta name="description" content="Vive momentos únicos en tu destino favorito. Todo organizado para asegurar que tu experiencia sea inmejorable." />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://metatags.io/" />
+        <meta property="og:title" content="TRAVLR: Tours" />
+        <meta property="og:description" content="Vive momentos únicos en tu destino favorito. Todo organizado para asegurar que tu experiencia sea inmejorable." />
+        <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+        <!-- X (Twitter) -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://metatags.io/" />
+        <meta property="twitter:title" content="TRAVLR: Tours" />
+        <meta property="twitter:description" content="Vive momentos únicos en tu destino favorito. Todo organizado para asegurar que tu experiencia sea inmejorable." />
+        <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/tours.css">
+        <link rel="stylesheet" href="css/footer.css">
+            
+        <!-- JS -->
+        <script src="js/main.js" defer></script>
+        <script src="js/tours.js" defer></script>
+            
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/images/Favicon.png">
+
+        <title>TRAVLR: Tours</title>
+    </head>
+    <body>
+
+        <!-- El Header lo traemos usando JavaScript -->
+        <header class="Header"></header>
+
+        <main>
+
+            <h1 class="u-h1">Elige tus tours</h1>
+
+            <div class="Wrapper">
+                <div class="Wrapper-col Information">
+                    <!-- El texto de los encabezados viene del JSON -->
+                    <section class="Information-content">
+                        <header class="Information-title">
+                            <h2 class="Information-h2"></h2>
+                            <h3 class="Information-h3"></h3>
+                        </header>
+                        <!-- El contenido de los párrafos también está en el JSON -->
+                        <div class="Information-texts">
+                            <p class="Information-p Information-p--1"></p>
+                            <p class="Information-p Information-p--2"></p>
+                            <p class="Information-p Information-p--3"></p>
+                        </div>
+                    </section>
+                    <div class="Information-buttons">
+                        <!-- El texto del botón viene por JavaScript -->
+                        <button class="Information-button u-primary" title="Añadir actividad">Añadir actividad</button>
+                        <a href="hoteles.html" class="Information-next u-secondary" title="Ir a Hoteles">Siguiente</a>
+                    </div>
+                </div>
+                <!-- Las imágenes de los tres tours vienen del JSON -->
+                <div class="Wrapper-col Gallery">
+                    <picture>
+                        <img class="Gallery-img" alt="Imagen del tour 1">
+                    </picture>
+                    <picture>
+                        <img class="Gallery-img" alt="Imagen del tour 2">
+                    </picture>
+                    <picture>
+                        <img class="Gallery-img" alt="Imagen del tour 3">
+                    </picture>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- El Footer lo traemos usando JavaScript -->
+        <footer class="Footer"></footer>
+
+    </body>
+</html>
