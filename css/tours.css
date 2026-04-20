@@ -183,10 +183,10 @@
         gap: 2rem;
     }
     .Information-content:hover .Information-texts, .Information-texts{
-        max-height: 17rem;
+        max-height: 14rem;
     }    
     .Gallery{
-        min-height: 14rem;
+        min-height: 12rem;
         gap: .5rem;
     }
 }

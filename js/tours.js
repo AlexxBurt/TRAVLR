@@ -1,3 +1,4 @@
+(() => {
 'use strict'
 
 
@@ -21,6 +22,7 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   const next = $(`.Information-next`)
   const button = $(`.Information-button`)
   const src = app.toAssetPath
+  if (!title || !subtitle || !text1 || !text2 || !text3 || !wrapper || !next || !button) return
 
 
 // Abre el primer tour y muestra su información del JSON
@@ -55,3 +57,4 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   button.addEventListener(`click`, () => (app.toggleTour(tours[active]), paint()))
   paint()
 })
+})()

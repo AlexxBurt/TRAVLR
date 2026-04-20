@@ -1,3 +1,4 @@
+(() => {
 'use strict'
 
 // Acordeón: abre un hotel y cierra el resto.
@@ -29,10 +30,13 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   const slug = app.getCountrySlugFromUrl()
   const entry = await app.getCountryEntryBySlug(slug)
   const hotels = await app.getHotelsByCountry(slug)
+  if (!entry) return
 
   app.setCountry(slug)
   const wrapper = document.querySelector(`.Wrapper`)
+  if (!wrapper) return
   const options = [...document.querySelectorAll(`.Accordion-option`)]
+  if (!options.length) return
   
   
 // Actualiza el texto de los botones según hotel seleccionado
@@ -74,7 +78,8 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   }
 
   setWrapperBackground(hotels[0]?.backgroundImage)
-  document.querySelector(`.Wrapper-next`).href = `reserva.html?pais=${encodeURIComponent(slug)}`
+  const nextLink = document.querySelector(`.Wrapper-next`)
+  if (nextLink) nextLink.href = `reserva.html?pais=${encodeURIComponent(slug)}`
 
   repaintButtons()
   initAccordion(activeIndex => {
@@ -82,3 +87,4 @@ window.addEventListener(`DOMContentLoaded`, async () => {
     setWrapperBackground(activeHotel?.backgroundImage)
   })
 })
+})()

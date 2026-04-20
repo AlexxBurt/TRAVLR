@@ -1,3 +1,4 @@
+(() => {
 'use strict'
 
 
@@ -8,6 +9,7 @@ const checkout = document.querySelector(`.Checkout`)
 const inputs = [...document.querySelectorAll(`.Form input`)]
 
 const showButton = () => {  
+  if (!formButton) return
   const isComplete = inputs
     .filter(i => !i.classList.contains(`Form-input`) || i.classList.contains(`isVisible`))
     .every(i => i.value.trim())
@@ -15,15 +17,20 @@ const showButton = () => {
   formButton.classList.toggle(`isVisible`, isComplete)
 }
 
-formButton.addEventListener(`click`, () => {
-  formButton.classList.remove(`isVisible`)
-  presection.classList.remove(`isActive`)
-  checkout.classList.add(`isVisible`)
-})
+if (formButton && presection && checkout) {
+  formButton.addEventListener(`click`, () => {
+    formButton.classList.remove(`isVisible`)
+    presection.classList.remove(`isActive`)
+    checkout.classList.add(`isVisible`)
+  })
+}
 
 
 // Deshabilitamos poder seleccionar fechas pasadas
-const input = document.querySelector("#date").min = new Date(Date.now() + 86400000).toISOString().slice(0, 10)
+const dateInput = document.querySelector(`#date`)
+if (dateInput) {
+  dateInput.min = new Date(Date.now() + 86400000).toISOString().slice(0, 10)
+}
 
 
 // El selector de pasajeros hace visibles más inputs de nombres
@@ -48,7 +55,7 @@ showButton()
 // Click en el botón de "Finalizar Compra" abre el popup
 const checkoutButton = document.querySelector(`.Checkout-button`)
 const paymentContainer = document.querySelector(`.Payment`)
-const paymentPopup = paymentContainer ? paymentContainer.closest(`.u-Background`) : null
+const paymentPopup = paymentContainer ? paymentContainer.closest(`.Popup-background`) : null
 
 if (checkoutButton && paymentPopup) {
   checkoutButton.addEventListener(`click`, () => {
@@ -62,6 +69,7 @@ const buttonCancel = document.querySelector(`.Payment-cancel`)
 const svgClose = document.querySelector(`.Payment-svg`)
 
 const closePopup = () => {
+  if (!paymentPopup) return
   paymentPopup.classList.remove(`isVisible`)
 }
 
@@ -95,6 +103,7 @@ const renderCheckoutByCountry = async () => {
   const hotelName = q(`.Checkout-field:nth-child(3) .Checkout-span`)
   const hotelPrice = q(`.Checkout-field:nth-child(3) .Checkout-span--price`)
   const totalPrice = q(`.Checkout-total span:last-child`)
+  if (!flightName || !flightPrice || !toursField || !hotelField || !hotelRow || !hotelName || !hotelPrice || !totalPrice || !passengersNumber) return
 
   flightName.textContent = countryName
   const trip = app.currencyToNumber(countryInfo.tripPrice)
@@ -143,3 +152,4 @@ const renderCheckoutByCountry = async () => {
 window.addEventListener(`DOMContentLoaded`, () => {
   renderCheckoutByCountry().catch(() => {})
 })
+})()

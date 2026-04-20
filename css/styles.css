@@ -193,11 +193,11 @@ body {
   padding: 8% 12%;
 }
 .Wrapper{
-    width: 100dvw;
-    min-height: 100dvh;
-    max-height: 100dvh;
+  width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
     overflow: hidden;
-    padding: 15dvh 6dvw;;
+  padding: 15vh 6vw;;
 }
 
 /* Estilo al seleccionar texto con el ratón */
@@ -254,14 +254,14 @@ input:-webkit-autofill {
 /* Responsive Pantallas grandes */
 @media  (min-width: 1600px){
   .Wrapper{
-    padding: 16dvh 16dvw;
+    padding: 16vh 16vw;
 
   }
 }
 
 @media (max-width: 1328px){
   .Wrapper{
-    padding: 15dvh 6dvw;
+    padding: 15vh 6vw;
   }
 }
 
@@ -280,7 +280,7 @@ input:-webkit-autofill {
 /* Responsive Tablet */
 @media (max-width: 960px){
   .Wrapper{
-      padding: 10dvh 6dvw;
+      padding: 10vh 6vw;
   }
   .u-terciary{
     display: none;
@@ -295,6 +295,6 @@ input:-webkit-autofill {
 /* Responsive Móvil */
 @media (max-width: 480px){
     Wrapper{
-      padding: 10dvh 8dvw;
+      padding: 10vh 8vw;
   }
 }
