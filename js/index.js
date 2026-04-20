@@ -14,11 +14,26 @@
     let currentIndex = 0
     let isLocked = false
 
+    const getSlideHeight = () => slider?.clientHeight || window.innerHeight
+    const getMaxIndex = () => slides.length - 1
+    const clampIndex = index => Math.max(0, Math.min(getMaxIndex(), index))
+
     const paint = () => {
+      const slideHeight = getSlideHeight()
       slides.forEach((slide, index) => {
-        slide.style.transform = `translateY(-${currentIndex * window.innerHeight}px)`
+        slide.style.transform = `translateY(-${currentIndex * slideHeight}px)`
         dots[index]?.classList.toggle(`isActive`, index === currentIndex)
       })
+    }
+
+    const syncSliderPosition = (behavior = `smooth`) => {
+      if (!slider) return
+      currentIndex = clampIndex(currentIndex)
+      const slideHeight = getSlideHeight()
+      const maxTop = getMaxIndex() * slideHeight
+      const targetTop = Math.max(0, Math.min(currentIndex * slideHeight, maxTop))
+      if (Math.abs(slider.scrollTop - targetTop) < 2) return
+      slider.scrollTo({ top: targetTop, behavior })
     }
 
     const move = direction => {
@@ -26,14 +41,16 @@
       isLocked = true
       currentIndex = (currentIndex + direction + slides.length) % slides.length
       paint()
+      syncSliderPosition()
       setTimeout(() => {
         isLocked = false
-      }, 850)
+      }, 500)
     }
 
     const handleDotClick = index => () => {
-      currentIndex = index
+      currentIndex = clampIndex(index)
       paint()
+      syncSliderPosition()
     }
 
     const handleKeydown = event => {
@@ -55,15 +72,27 @@
       if (nextIndex < 0 || nextIndex === currentIndex) return
       currentIndex = nextIndex
       paint()
+      syncSliderPosition()
     }
 
     const handleSliderScroll = () => {
       if (!slider) return
-      const nextIndex = Math.round(slider.scrollTop / window.innerHeight)
+      const slideHeight = getSlideHeight()
+      const nextIndex = Math.round(slider.scrollTop / slideHeight)
       const isOutOfRange = nextIndex < 0 || nextIndex >= slides.length
-      if (isOutOfRange || nextIndex === currentIndex) return
-      currentIndex = nextIndex
+      if (isOutOfRange) {
+        syncSliderPosition(`auto`)
+        return
+      }
+      if (nextIndex === currentIndex || isLocked) return
+
+      isLocked = true
+      currentIndex = clampIndex(currentIndex + (nextIndex > currentIndex ? 1 : -1))
       paint()
+      syncSliderPosition()
+      setTimeout(() => {
+        isLocked = false
+      }, 500)
     }
 
     const getCountrySlugByButton = button => {
@@ -113,5 +142,6 @@
     document.addEventListener(`click`, handleCountrySelection)
 
     paint()
+    syncSliderPosition(`auto`)
   })
 })()
