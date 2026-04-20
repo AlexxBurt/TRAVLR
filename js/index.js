@@ -20,7 +20,7 @@
         dots[index]?.classList.toggle(`isActive`, index === currentIndex)
       })
     }
-/Users/alexxburt/Desktop/Alexx/Estudios/CEI/Fullstack/Maquetación/TRAVLR/js/index.js
+
     const move = direction => {
       if (isLocked) return
       isLocked = true
