@@ -9,90 +9,100 @@
     const slides = [...wrapper.querySelectorAll(`.Slider-frame`)]
     const dots = [...wrapper.querySelectorAll(`.Selector-dot`)]
     const slider = wrapper.querySelector(`.Slider`)
-    if (!slides.length || !dots.length) return
+    if (!slides.length || !dots.length || !slider) return
 
-    let currentIndex = 0
-    let isLocked = false
+    let curSlide = 0
+    const maxSlide = slides.length - 1
+    let isAnimating = false
+    let unlockTimer = null
+    let wheelGestureLocked = false
+    let wheelReleaseTimer = null
+    let touchStartY = 0
 
-    const getSlideHeight = () => slider?.clientHeight || window.innerHeight
-    const getMaxIndex = () => slides.length - 1
-    const clampIndex = index => Math.max(0, Math.min(getMaxIndex(), index))
+    const lock = (duration = 700) => {
+      isAnimating = true
+      clearTimeout(unlockTimer)
+      unlockTimer = setTimeout(() => {
+        isAnimating = false
+      }, duration)
+    }
 
     const paint = () => {
-      const slideHeight = getSlideHeight()
       slides.forEach((slide, index) => {
-        slide.style.transform = `translateY(-${currentIndex * slideHeight}px)`
-        dots[index]?.classList.toggle(`isActive`, index === currentIndex)
+        slide.style.transform = `translateY(${(-100 * curSlide)}%)`
+        dots[index]?.classList.toggle(`isActive`, index === curSlide)
       })
     }
 
-    const syncSliderPosition = (behavior = `smooth`) => {
-      if (!slider) return
-      currentIndex = clampIndex(currentIndex)
-      const slideHeight = getSlideHeight()
-      const maxTop = getMaxIndex() * slideHeight
-      const targetTop = Math.max(0, Math.min(currentIndex * slideHeight, maxTop))
-      if (Math.abs(slider.scrollTop - targetTop) < 2) return
-      slider.scrollTo({ top: targetTop, behavior })
+    const goToSlide = index => {
+      curSlide = index
+      paint()
+      lock()
     }
 
-    const move = direction => {
-      if (isLocked) return
-      isLocked = true
-      currentIndex = (currentIndex + direction + slides.length) % slides.length
-      paint()
-      syncSliderPosition()
-      setTimeout(() => {
-        isLocked = false
-      }, 500)
+    const nextSlide = () => {
+      if (isAnimating) return
+      if (curSlide === maxSlide) {
+        goToSlide(0)
+      } else {
+        goToSlide(curSlide + 1)
+      }
+    }
+
+    const prevSlide = () => {
+      if (isAnimating) return
+      if (curSlide === 0) {
+        goToSlide(maxSlide)
+      } else {
+        goToSlide(curSlide - 1)
+      }
     }
 
     const handleDotClick = index => () => {
-      currentIndex = clampIndex(index)
-      paint()
-      syncSliderPosition()
+      if (index === curSlide || isAnimating) return
+      goToSlide(index)
     }
 
     const handleKeydown = event => {
-      if (event.key === `ArrowDown`) return move(1)
-      if (event.key === `ArrowUp`) return move(-1)
+      if (event.key === `ArrowDown`) return nextSlide()
+      if (event.key === `ArrowUp`) return prevSlide()
     }
 
     const handleWheel = event => {
+      if (!event.cancelable) return
       event.preventDefault()
-      const isAtStart = currentIndex === 0 && event.deltaY < 0
-      const isAtEnd = currentIndex === slides.length - 1 && event.deltaY > 0
-      if (isLocked || isAtStart || isAtEnd) return
-      move(event.deltaY > 0 ? 1 : -1)
+
+      clearTimeout(wheelReleaseTimer)
+      wheelReleaseTimer = setTimeout(() => {
+        wheelGestureLocked = false
+      }, 220)
+
+      if (wheelGestureLocked || isAnimating) return
+      if (Math.abs(event.deltaY) < 10) return
+
+      wheelGestureLocked = true
+      if (event.deltaY > 0) return nextSlide()
+      prevSlide()
     }
 
     const handleFocusIn = event => {
       const frame = event.target.closest(`.Slider-frame`)
       const nextIndex = slides.indexOf(frame)
-      if (nextIndex < 0 || nextIndex === currentIndex) return
-      currentIndex = nextIndex
-      paint()
-      syncSliderPosition()
+      if (nextIndex < 0 || nextIndex === curSlide || isAnimating) return
+      goToSlide(nextIndex)
     }
 
-    const handleSliderScroll = () => {
-      if (!slider) return
-      const slideHeight = getSlideHeight()
-      const nextIndex = Math.round(slider.scrollTop / slideHeight)
-      const isOutOfRange = nextIndex < 0 || nextIndex >= slides.length
-      if (isOutOfRange) {
-        syncSliderPosition(`auto`)
-        return
-      }
-      if (nextIndex === currentIndex || isLocked) return
+    const handleTouchStart = event => {
+      touchStartY = event.changedTouches?.[0]?.clientY || 0
+    }
 
-      isLocked = true
-      currentIndex = clampIndex(currentIndex + (nextIndex > currentIndex ? 1 : -1))
-      paint()
-      syncSliderPosition()
-      setTimeout(() => {
-        isLocked = false
-      }, 500)
+    const handleTouchEnd = event => {
+      if (isAnimating) return
+      const endY = event.changedTouches?.[0]?.clientY || 0
+      const delta = touchStartY - endY
+      if (Math.abs(delta) < 40) return
+      if (delta > 0) return nextSlide()
+      prevSlide()
     }
 
     const getCountrySlugByButton = button => {
@@ -138,10 +148,10 @@
     window.addEventListener(`keydown`, handleKeydown)
     window.addEventListener(`wheel`, handleWheel, { passive: false })
     document.addEventListener(`focusin`, handleFocusIn)
-    slider?.addEventListener(`scroll`, handleSliderScroll)
+    slider?.addEventListener(`touchstart`, handleTouchStart, { passive: true })
+    slider?.addEventListener(`touchend`, handleTouchEnd, { passive: true })
     document.addEventListener(`click`, handleCountrySelection)
 
     paint()
-    syncSliderPosition(`auto`)
   })
 })()

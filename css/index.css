@@ -2,30 +2,29 @@
     display: flex;
     flex-direction: column;
     padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
 }
 .Slider{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row: auto;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    touch-action: none;
 }
 .Slider-frame{
     min-height: 100vh;
-    background-color: grey;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     gap: 3rem;
-    /* Cambiar este "all" rompe el efecto */
-    transition: all 1s cubic-bezier( .62, .24, .33, 1 );
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     position: relative;
+    transition: transform 1s cubic-bezier( .62, .24, .33, 1 );
+    will-change: transform;
 }
 
 .Slider-text{
