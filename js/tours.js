@@ -18,15 +18,58 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   const text1 = $(`.Information-p`)
   const text2 = $(`.Information-p--2`)
   const text3 = $(`.Information-p--3`)
+  const infoContent = $(`.Information-content`)
+  const infoButtons = $(`.Information-buttons`)
+  const gallery = $(`.Gallery`)
   const wrapper = $(`.Wrapper`)
   const next = $(`.Information-next`)
   const button = $(`.Information-button`)
   const src = app.toAssetPath
-  if (!title || !subtitle || !text1 || !text2 || !text3 || !wrapper || !next || !button) return
+  if (!title || !subtitle || !text1 || !text2 || !text3 || !wrapper || !next || !button || !infoContent || !infoButtons || !gallery) return
 
 
 // Abre el primer tour y muestra su información del JSON
   let active = 0
+  let isTransitioning = false
+
+  const restartTourAnimations = () => {
+    const nodes = [
+      subtitle,
+      title,
+      text1,
+      text2,
+      text3,
+      button,
+      next,
+      ...gallery.querySelectorAll(`picture`)
+    ].filter(Boolean)
+
+    const speeds = [0.85, 0.95, 1.05]
+    nodes.forEach(node => node.classList.remove(`u-fade-in-up`))
+    void wrapper.offsetHeight
+
+    nodes.forEach((node, index) => {
+      const delay = 0.45 + (index * 0.08)
+      node.style.setProperty(`--fade-up-duration`, `${speeds[index % speeds.length]}s`)
+      node.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+      node.classList.add(`u-fade-in-up`)
+    })
+  }
+
+  const animateChange = (onUpdate, duration = 280) => {
+    if (isTransitioning) return
+    isTransitioning = true
+    const targets = [infoContent, infoButtons, gallery]
+    targets.forEach(node => node.classList.add(`isFading`))
+
+    setTimeout(() => {
+      onUpdate()
+      targets.forEach(node => node.classList.remove(`isFading`))
+      restartTourAnimations()
+      isTransitioning = false
+    }, duration)
+  }
+
   const paint = () => {
     const t = tours[active]
     title.textContent = t.name || `Tour destacado`
@@ -43,8 +86,11 @@ window.addEventListener(`DOMContentLoaded`, async () => {
       img.alt = `${countryName} - ${item.name}`
       img.classList.toggle(`isActive`, idx === active)
       img.onclick = () => {
-        active = idx
-        paint()
+        if (idx === active) return
+        animateChange(() => {
+          active = idx
+          paint()
+        })
       }
     })
   }
@@ -56,5 +102,6 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   app.setCountry(slug)
   button.addEventListener(`click`, () => (app.toggleTour(tours[active]), paint()))
   paint()
+  restartTourAnimations()
 })
 })()

@@ -19,6 +19,33 @@
     let wheelReleaseTimer = null
     let touchStartY = 0
 
+    const animateActiveSlide = () => {
+      slides.forEach(frame => {
+        frame.querySelectorAll(`.Slider-text, .Slider-button`).forEach(node => {
+          node.classList.remove(`u-fade-in-up`)
+          node.style.removeProperty(`--fade-up-duration`)
+          node.style.removeProperty(`--fade-up-delay`)
+        })
+      })
+
+      const frame = slides[curSlide]
+      if (!frame) return
+      const items = [
+        frame.querySelector(`.Slider-text`),
+        frame.querySelector(`.Slider-button`)
+      ].filter(Boolean)
+
+      void slider.offsetHeight
+
+      const speeds = [0.85, 0.95]
+      items.forEach((item, index) => {
+        const delay = 0.5 + (index * 0.22)
+        item.style.setProperty(`--fade-up-duration`, `${speeds[index % speeds.length]}s`)
+        item.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+        item.classList.add(`u-fade-in-up`)
+      })
+    }
+
     const lock = (duration = 700) => {
       isAnimating = true
       clearTimeout(unlockTimer)
@@ -37,6 +64,7 @@
     const goToSlide = index => {
       curSlide = index
       paint()
+      animateActiveSlide()
       lock()
     }
 
@@ -153,5 +181,6 @@
     document.addEventListener(`click`, handleCountrySelection)
 
     paint()
+    animateActiveSlide()
   })
 })()

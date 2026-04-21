@@ -35,9 +35,34 @@ const loadFooter = () => {
 
     if (!footer || !svg) return
 
+    const animateFooterReveal = () => {
+        const items = [
+            svg,
+            ...footer.querySelectorAll(`.Footer-li`)
+        ]
+
+        items.forEach(item => {
+            item.classList.remove(`u-fade-in-up`)
+            item.style.removeProperty(`--fade-up-duration`)
+            item.style.removeProperty(`--fade-up-delay`)
+        })
+
+        void footer.offsetHeight
+
+        const speeds = [0.85, 0.95, 1.05]
+        items.forEach((item, index) => {
+            const delay = 0.18 + (index * 0.1)
+            item.style.setProperty(`--fade-up-duration`, `${speeds[index % speeds.length]}s`)
+            item.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+            item.classList.add(`u-fade-in-up`)
+        })
+    }
+
 
     svg.addEventListener(`click`, () => {
+        const willOpen = !footer.classList.contains(`isVisible`)
         footer.classList.toggle(`isVisible`)
+        if (willOpen) animateFooterReveal()
     })
 
     if (footerButton && popup) {
@@ -248,6 +273,49 @@ const loadLayout = async () => {
     updateHeader()
 }
 
+const initFadeInUp = () => {
+    const page = currentPage()
+    const targets = [...document.querySelectorAll(`h2, h3, p, .u-primary, .u-secondary, .u-terciary`)]
+        .filter(element => !element.closest(`.Header`) && !element.closest(`.Footer`))
+        .filter(element => !(page === `index.html` && element.closest(`.Slider-frame`)))
+    const times = [0.85, 0.95, 1.05]
+    const toArray = list => [...list].filter(Boolean)
+    const sortTopDown = elements => [...elements].sort((a, b) => {
+        const ra = a.getBoundingClientRect()
+        const rb = b.getBoundingClientRect()
+        if (Math.abs(ra.top - rb.top) > 4) return ra.top - rb.top
+        return ra.left - rb.left
+    })
+    const sortLeftRight = elements => [...elements].sort((a, b) => {
+        const ra = a.getBoundingClientRect()
+        const rb = b.getBoundingClientRect()
+        if (Math.abs(ra.left - rb.left) > 4) return ra.left - rb.left
+        return ra.top - rb.top
+    })
+
+    let sequence = 0
+
+    const applyStagger = (elements, sorter, extraDelay = 0) => {
+        const ordered = sorter(toArray(elements))
+
+        ordered.forEach((element, index) => {
+            const delay = 0.45 + (sequence * 0.08) + extraDelay
+            element.classList.add(`u-fade-in-up`)
+            element.style.setProperty(`--fade-up-duration`, `${times[index % times.length]}s`)
+            element.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+            sequence += 1
+        })
+    }
+
+    applyStagger(targets, sortTopDown)
+
+    // En tours: las imágenes deben entrar al final
+    if (page === `tours.html`) {
+        const pictures = document.querySelectorAll(`.Gallery picture`)
+        applyStagger(pictures, sortLeftRight, 0.25)
+    }
+}
+
 window.loadLayout = loadLayout
 window.addEventListener(`DOMContentLoaded`, () => {
     const page = currentPage()
@@ -258,7 +326,8 @@ window.addEventListener(`DOMContentLoaded`, () => {
     if (page === `hoteles.html` && !cart.countrySlug) return location.replace(`index.html`)
     if (page === `reserva.html` && !cart.hotel) return location.replace(cart.countrySlug ? `hoteles.html?pais=${encodeURIComponent(cart.countrySlug)}` : `index.html`)
 
-    loadLayout()
+    initFadeInUp()
+    loadLayout().then(() => initFadeInUp())
 
 
     // Volver a la página principal (index.html) reseta el carrito y borra la navegación (no se puede volver atrás)

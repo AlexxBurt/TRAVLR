@@ -35,8 +35,11 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   app.setCountry(slug)
   const wrapper = document.querySelector(`.Wrapper`)
   if (!wrapper) return
+  const content = document.querySelector(`.Wrapper-content`)
+  if (!content) return
   const options = [...document.querySelectorAll(`.Accordion-option`)]
   if (!options.length) return
+  let isTransitioning = false
   
   
 // Actualiza el texto de los botones según hotel seleccionado
@@ -77,6 +80,17 @@ window.addEventListener(`DOMContentLoaded`, async () => {
     wrapper.style.background = `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.2)), url('${bg}') center / cover no-repeat`
   }
 
+  const animateHotelChange = onUpdate => {
+    if (isTransitioning) return
+    isTransitioning = true
+    content.classList.add(`isFading`)
+    setTimeout(() => {
+      onUpdate()
+      content.classList.remove(`isFading`)
+      isTransitioning = false
+    }, 260)
+  }
+
   setWrapperBackground(hotels[0]?.backgroundImage)
   const nextLink = document.querySelector(`.Wrapper-next`)
   if (nextLink) nextLink.href = `reserva.html?pais=${encodeURIComponent(slug)}`
@@ -84,7 +98,10 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   repaintButtons()
   initAccordion(activeIndex => {
     const activeHotel = hotels[activeIndex]
-    setWrapperBackground(activeHotel?.backgroundImage)
+    animateHotelChange(() => {
+      setWrapperBackground(activeHotel?.backgroundImage)
+      repaintButtons()
+    })
   })
 })
 })()

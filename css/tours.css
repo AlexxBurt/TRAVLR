@@ -56,6 +56,19 @@
     flex-flow: row nowrap;
     gap: 1.25rem;
 }
+
+.Information-content,
+.Information-buttons,
+.Gallery{
+    animation: fadeIn .28s ease both;
+}
+
+.Information-content.isFading,
+.Information-buttons.isFading,
+.Gallery.isFading{
+    animation: fadeOut .28s ease both;
+}
+
 .Gallery{
     min-height: 25rem;
     display: grid;

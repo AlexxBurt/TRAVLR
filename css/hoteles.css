@@ -13,6 +13,10 @@
     justify-content: space-between;
     border-radius: var(--br-square);
     backdrop-filter: blur(10px);
+    animation: fadeIn .26s ease both;
+}
+.Wrapper-content.isFading{
+    animation: fadeOut .26s ease both;
 }
 .Accordion{
     display: grid;

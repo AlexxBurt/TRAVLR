@@ -54,8 +54,7 @@ showButton()
 
 // Click en el botón de "Finalizar Compra" abre el popup
 const checkoutButton = document.querySelector(`.Checkout-button`)
-const paymentContainer = document.querySelector(`.Payment`)
-const paymentPopup = paymentContainer ? paymentContainer.closest(`.Popup-background`) : null
+const paymentPopup = document.querySelector(`main > .Popup-background`)
 
 if (checkoutButton && paymentPopup) {
   checkoutButton.addEventListener(`click`, () => {
