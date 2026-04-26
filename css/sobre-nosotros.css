@@ -171,7 +171,7 @@
 /* Responsive Móvil */
 @media (max-width: 480px){
     .Wrapper{
-        padding-bottom: 2vh;
+        padding-bottom: 2dvh;
     }
     .Container{
         flex-direction: column;

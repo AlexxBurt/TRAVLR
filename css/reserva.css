@@ -323,7 +323,7 @@
 
 @media (max-width: 960px){
     .Wrapper{
-        padding: 14vh 6vw;
+        padding: 14dvh 6dvw;
 
     }
     .Checkout{
@@ -387,7 +387,7 @@
 /* Responsive Móvil */
 @media (max-width: 480px){
     .Wrapper{
-        padding: 12vh 1rem;
+        padding: 12dvh 1rem;
         gap: 1rem;
     }
     .Form{

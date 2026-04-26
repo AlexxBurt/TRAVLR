@@ -1,5 +1,5 @@
 # TRAVLR
-![Imagen del proyecto](./assets/images/mockup-front)
+![Imagen del proyecto](./assets/images/mockup-front.webp)
 
 
 ## Descripción 📑
@@ -16,12 +16,14 @@ La aplicación trae la mayoría de la información desde archivos JSON locales y
 
 
 ## ¿Qué he aprendido en este proyecto? 🙇🏻
-- Arquitectura de sitio multipágina reutilizando `header` y `footer` con carga dinámica.
-- Gestión de estado compartido en front-end sin frameworks (`AppData` + `sessionStorage`).
-- Renderizado dinámico desde JSON (`countries`, `tours`, `hotels`).
-- Control de navegación por pasos (bloqueo de páginas si faltan selecciones previas).
-- Interacciones UI: slider vertical, galería, acordeón, checkout dinámico y popups.
-- Organización de JavaScript en módulos IIFE para aislar scope y evitar contaminación global.
+- Estructuración jerárquica y semántica del contenido HTML utilizando la metodología SuitCSS.
+- Uso de custom properties en CSS para mantener coherencia visual en tipografías, colores, etc.
+- Adaptación del diseño a distintos tamaños de dispositivos móvil, tablet y ordenador para asegurar la correcta visualización.
+- Carga nativa de fuentes usando @font-face para que sea visible en todos los dispositivos y optimizar los tiempos de carga.
+- Optimización de elementos visuales (imágenes y fondos) para equilibrio entre calidad y rendimiento.
+- Desarrollo de documentos JSON para crear contenido dinámico en la interfaz.
+- Uso mejorado y optimización de herramientas de Inteligencia Artificial aplicada a entornos de trabajo de programación / maquetación.
+- 
 
 
 ## Tecnologías 🛠
@@ -33,8 +35,8 @@ La aplicación trae la mayoría de la información desde archivos JSON locales y
 ## Vista previa del proyecto
 Si quieres echar un vistazo rápido al diseño:
 
-![Imagen del proyecto](./assets/images/mockup-laptop)
-![Imagen 2 del proyecto](./assets/images/mockup-mobile)
+![Imagen del proyecto](./assets/images/mockup-laptop.webp)
+![Imagen 2 del proyecto](./assets/images/mockup-mobile.webp)
 
 
 ## Estructura del proyecto

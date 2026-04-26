@@ -130,7 +130,7 @@ input [type="text"]{
 /* Responsive Móvil */
 @media (max-width: 480px){
     .Wrapper{
-        padding: 10vh 4vw;
+        padding: 10dvh 4dvw;
     }
     .Contact{
         padding: 1.5rem;
