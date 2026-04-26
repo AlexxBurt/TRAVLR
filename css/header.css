@@ -14,7 +14,6 @@
     align-items: center;
 }
 .Header-li{
-    color: var(--c-primary-50);
     font-size: var(--fs-med);
     font-weight: var(--fw-bold);
     text-transform: uppercase;
@@ -26,37 +25,31 @@
     color: var(--c-primary-75);
     font-size: var(--fs-extrabig);
 }
+/* Banco semitransparente en páginas ya visitadas no activas */
 .Header-a{
     min-width: 100%;
     padding: .625rem 1.25rem;
+    color: var(--c-primary-50);
     cursor: pointer;
     transition: color .4s ease;
 }
-/* Banco semitransparente en páginas ya visitadas */
 .Header-a:hover{
     color: var(--c-primary-75);
 }
-/* Blanco completo si está en esa página */
+/* Blanco completo si la página está activa */
 .Header-a.isActive{
     color: var(--c-primary-100);
 }
-/* "Desactivamos" estilo al hacer hover */
+/* Si está activa "quitamos" el hover */
 .Header-a.isActive:hover{
     text-decoration: none;
     cursor: auto;
 }
 .Header-a.isVisible{
-    color: var(--c-primary-100);
+    color: var(--c-primary-50);
 }
-.Header-a.Header-a.isVisible:hover{
+.Header-a.isVisible:hover{
     color: var(--c-primary-100);
-}
-
-
-
-/* Responsive Tablet */
-@media (max-width: 1024px){
-    
 }
 
 
@@ -69,7 +62,6 @@
         display: none;
     }
 }
-
 
 
 /* Responsive Móvil */
@@ -85,8 +77,7 @@
     }
     .Header-ul{
         justify-content: space-between;
-    }
-    
+    }    
     .Header-a{
         padding: 1rem;
         border-radius: var(--br-round);

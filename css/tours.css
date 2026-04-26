@@ -8,6 +8,14 @@
 .Wrapper-col{
     max-height: 25rem;
 }
+/*
+Sección izquierda con los textos y botones
+- Estilo de la parte superior que incluye los titulares y textos
+- Estilo de la cabecera / column-reverse para que el h3 vaya después del h2 en el html pero visualmente se vean al revés
+- Estilo de los titulares
+- Estilos del texto
+- Estilos de la caja con los botones 
+*/
 .Information{
     display: flex;
     flex-direction: column;
@@ -20,17 +28,6 @@
     display: flex;
     flex-flow: column;
     gap: 1rem;
-}
-.Information-texts{
-    max-height: 8.35rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    overflow-y: auto;
-    transition: max-height 1s ease;
-}
-.Information-content:hover .Information-texts{
-    max-height: 14rem;
 }
 .Information-title{
     display: flex;
@@ -50,25 +47,42 @@
     text-transform: uppercase;
     color: var(--c-primary-50);
 }
+/* Texto contraído */
+.Information-texts{
+    max-height: 8.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    transition: max-height 1s ease;
+}
+/* Teexto expandido al hacer hover */
+.Information-content:hover .Information-texts{
+    max-height: 14rem;
+}
 .Information-buttons{
     width: fit-content;
     display: flex;
     flex-flow: row nowrap;
     gap: 1.25rem;
 }
-
-.Information-content,
-.Information-buttons,
-.Gallery{
+/* Animaciones */
+.Information-content , .Information-buttons , .Gallery{
     animation: fadeIn .28s ease both;
 }
-
-.Information-content.isFading,
-.Information-buttons.isFading,
-.Gallery.isFading{
+.Information-content.isFading , .Information-buttons.isFading , .Gallery.isFading{
     animation: fadeOut .28s ease both;
 }
 
+
+/*
+Galería de imágenes relativas a los tours
+-Grid con imágenes
+-Cuadro de imagen
+-Estilo cuando está activo / más grande y brillante
+-Estilo cuando no está activo / más oscuro
+-Estilos de los cuadros cuando se hace hover / más oscuro o claro si se hace o no hover
+*/
 .Gallery{
     min-height: 25rem;
     display: grid;
@@ -136,7 +150,6 @@
         line-height: 150%;
     }
 }
-
 
 
 /* Responsive pantallas pequeñas */

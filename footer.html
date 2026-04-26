@@ -1,9 +1,8 @@
-
 <!-- Footer único que se reutilizará en cada página mediante JavaScript -->
 
 <svg aria-hidden="true" width="0" height="0" style="position:absolute;inline-size:0;block-size:0;overflow:hidden">
-    <symbol id="icon-footer-toggle" viewBox="0 0 20 20">
-        <path fill="currentColor" fill-rule="evenodd"
+    <symbol id="footer-icon" viewBox="0 0 20 20">
+        <path fill="currentColor" fill-rule="evenodd" 
             d="M4.293 15.707a1 1 0 0 1 0-1.414l5-5a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414 0m0-6a1 1 0 0 1 0-1.414l5-5a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1-1.414 1.414L10 5.414L5.707 9.707a1 1 0 0 1-1.414 0"
             clip-rule="evenodd" />
     </symbol>
@@ -14,9 +13,8 @@
     </symbol>
 </svg>
 
-<svg class="Footer-svg" xmlns="http://www.w3.org/2000/svg" width="20"
-    height="20" viewBox="0 0 20 20">
-    <use href="#icon-footer-toggle"></use>
+<svg class="Footer-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <use href="#footer-icon"></use>
 </svg>
 
 <!-- Botónes ocultos del footer -->
@@ -36,8 +34,12 @@
 <!-- Popup con textos legales -->
     <div class="Footer-background">
         <div class="Footer-popup Popup">
+            <!-- svg para cerrar el popup-->
+            <svg xmlns="http://www.w3.org/2000/svg" class="Popup-close" width="80" height="80" viewBox="0 0 24 24"><rect width="24" height="24" fill="none" />
+                <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m7 7l10 10M7 17L17 7" />
+            </svg>
             <!-- Botones / Tabs -->
-            <ul class="Popup-ul" class="Popup-header">
+            <ul class="Popup-header">
                 <li class="Popup-tab">Aviso legal</li>
                 <li class="Popup-tab">Política de privacidad</li>
                 <li class="Popup-tab">Devoluciones y reembolsos</li>
@@ -77,11 +79,11 @@
                 </div>
             </section>
 
-            <section class="Popup-info Popup-info--privacy isVisible">
+            <section class="Popup-info Popup-info--privacy">
                 <p>De acuerdo con lo establecido en el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), se informa al usuario de los siguientes puntos:</p>
                 <div class="Popup-group">
                     <h3 class="Popup-h3">Responsable del Tratamiento:</h3>
-                    <p>Alexander Burt Buitrago.
+                    <span>Alexander Burt Buitrago.</span>
                 </div>
                 <div class="Popup-group">
                     <h3 class="Popup-h3">Finalidad:</h3>
@@ -105,8 +107,7 @@
             </section>
 
             <section class="Popup-info Popup-info--refunds">
-                <p>
-                De conformidad con lo previsto en el Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios, se establecen las siguientes condiciones de desistimiento:</p>
+                <p>De conformidad con lo previsto en el Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios, se establecen las siguientes condiciones de desistimiento:</p>
                 <ul class="Popup-ul">
                     <li>
                         <div class="Popup-group">
@@ -161,9 +162,6 @@
                 <p>El usuario puede configurar su navegador para aceptar, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su dispositivo.</p>
             </section>
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="Popup-svg" width="80" height="80" viewBox="0 0 24 24">
-                <use href="#icon-close"></use>
-            </svg>
         </div>
     </div>
 </div>

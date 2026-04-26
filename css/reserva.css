@@ -9,7 +9,9 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    overflow: auto;
 }
+/* Columnas del wrapper */
 .Wrapper-col{
     min-height: 100%;
     background-color: var(--c-primary-10);
@@ -20,16 +22,21 @@
     flex-direction: column;
     gap: 1.25rem;
 }
+/* Caja del formulario */
 .Form{
     min-height: fit-content;
     align-self: start;
+    position: sticky;
+    top: 0;
 }
+/* Estilos comunes a ambas cajas */
 .Form-h2 , .Checkout-h2{
     font-size: var(--fs-med);
     font-weight: var(--fw-bold);
     color: var(--c-primary-75);
     text-transform: uppercase;
 }
+/* Para ocultar y mostrar el input date y el selector de pasajeros tras confirmar */
 .Form-presection{
     display: none;
 }
@@ -38,24 +45,25 @@
     display: flex;
     justify-content: space-between;
 }
+/* Cambia el color de las flechas selectoras y del icono del calendario*/
+::-webkit-inner-spin-button , ::-webkit-calendar-picker-indicator{
+     filter: invert(1);
+}
+/* Estilos para el input de selector de pasajeros */
 .Form-number input{
     width: 100%;
     max-width: 5rem;
     text-align: end;
     justify-self: end;
 }
+/* Estilos para el input del nombre */
 .Form-input{
     display: none;
 }
 .Form-input.isVisible{
     display: block;
 }
-/* Cambia el color de las flechas selectoras y del icono del calendario*/
-::-webkit-inner-spin-button , ::-webkit-calendar-picker-indicator{
-     filter: invert(1);
-}
-
-
+/* Para ocultar y mostrar el botón tras confirmar */
 .Form-button{
     margin: 3rem 0 0 0;
     justify-self: center;
@@ -64,6 +72,7 @@
 .Form-button.isVisible{
     display: block;
 }
+/* Caja oculta para el pago */
 .Checkout{
     display: flex;
     flex-direction: column;
@@ -83,11 +92,13 @@
     color: var(--c-primary-50);
     margin-top: -.625rem;
 }
+/* Info del carrito */
 .Checkout-summary{
     display: flex;
     flex-direction: column;
     gap: .625rem;
 }
+/* Títulos de las secciones / pags. anteriores */
 .Checkout-h3{
     font-size: var(--fs-regular);
     font-weight: var(--fw-bold);
@@ -97,6 +108,7 @@
     margin: .5rem;
     border-bottom: 1px solid var(--c-primary-50);
 }
+/* Info de items */
 .Checkout-data{
     padding: .5rem 1rem;
     display: flex;
@@ -106,20 +118,23 @@
     font-weight: var(--fw-bold);
     color: var(--c-primary-100);
 }
+/* Precios de items */
 .Checkout-span--price{
-    font-size: var(--fs-big);
+    font-size: var(--fs-med);
     color: var(--c-primary-75);
 }
+/* Subtotal y precio */
 .Checkout-total{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     padding: .5rem 1rem;
-    font-size: var(--fs-med);
+    font-size: var(--fs-big);
     font-weight: var(--fw-bold);
     color: var(--c-primary-100);
     text-transform: uppercase;
 }
+/* Botón de "Finalizar Compra" */
 .Checkout-button{
     min-width: 100%;
     padding: 1rem;
@@ -127,6 +142,7 @@
     font-weight: var(--fw-bold);
 }
 
+/* Popup de pago */
 .Popup-background{
     display: none;
 }
@@ -136,6 +152,7 @@
     max-height: 100vh;
     background-color: var(--c-secondary-75);
     display: grid;
+    place-content: center;
     place-items: center;
     grid-template-columns: 1fr;
     position: absolute;
@@ -144,6 +161,7 @@
     z-index: 2;
     overflow: hidden;
 }
+/* Caja del popup */
 .Payment{
     min-height: fit-content;
     max-width: 45%;
@@ -157,6 +175,7 @@
     color: var(--c-primary-75);
     position: relative;
 }
+/* svg para cerrar el popup + hover */
 .Payment-svg{
     height: 1.5rem;
     position: absolute;
@@ -170,6 +189,7 @@
     opacity: .5;
     scale: 1.05;
 }
+/* Título y textos del popup */
 .Payment-title{
     font-size: var(--fs-med);
     font-weight: var(--fw-bold);
@@ -178,6 +198,7 @@
 .Payment-description{
     font-size: var(--fs-regular);
 }
+/* Formulario de pago */
 .Payment-form{
     display: flex;
     flex-direction: column;
@@ -194,12 +215,14 @@
     grid-template-columns: 1.5fr .5fr .5fr;
     gap: 1rem;
 }
+/* Caja de los botones */
 .Payment-buttons{
     display: flex;
     gap: 1rem;
     justify-content: center;
     margin: 2rem 0 0;
 }
+/* Botón de cancelar + hover */
 .Payment-cancel{
     background-color: var(--c-primary-10);
     border: 2px solid var(--c-primary-25);
@@ -210,12 +233,26 @@
     border: 2px solid transparent;
     color: var(--c-primary-75);
 }
+/* Mensaje de compra realizada */
+.Payment-response{
+    background-color: #D1F4DA;
+    padding: 1rem 2rem;
+    border-radius: var(--br-round);
+    color: #457736;
+    margin: 2rem auto 0;
+    text-wrap: balance;
+    text-align: center;
+}
+.Payment-symbol{
+    font-size: var(--fs-med);
+}
+/* Estilo al "subrayar" que oscurece el texto seleccionado */
 .Payment ::selection{
     color: var(--c-primary-25);
 }
 
 
-/* Responsive portatil */
+/* Responsive pantallas grandes */
 @media (min-width: 1600px){
     .Form-presection.isActive{
         justify-content: start;
@@ -231,6 +268,7 @@
 @media (max-width: 1328px){
     .Wrapper-col{
         padding: 1.5rem;
+        gap: 2rem;
     }
     .Form-presection.isActive{
         justify-content: space-between;
@@ -239,7 +277,19 @@
     .Form-number input{
         justify-self: end;
     }
+    .Checkout{
+        gap: 1rem;
+    }
+    .Checkout-summary {
+        gap: 0;
+    }
+    .Checkout-button{
+        padding: .5rem;
+    }
     /* Popup */
+    .Payment{
+        max-width: 55%;
+    }
     .Payment-container{
         max-width: 50%;
         padding: 2rem;
@@ -259,6 +309,9 @@
         grid-template-columns: 1fr;
     }
     /* Popup */
+    .Payment {
+        max-width: 72%;
+    }
     .Payment-container{
         padding: 2rem;
      }
@@ -266,6 +319,22 @@
         gap: .5rem;
     }
 }
+
+
+@media (max-width: 960px){
+    .Wrapper{
+        padding: 14vh 6vw;
+
+    }
+    .Checkout{
+        gap: .25rem;
+    }
+    .Checkout-total{
+        font-size: var(--fs-big);
+    }
+}
+
+
 
 @media (max-width: 768px){
     .Wrapper{
@@ -284,15 +353,18 @@
     .Checkout{
         padding: 1.5rem;
     }
-
-   /* Popup */
+    /* Popup */
     .Payment-container{
         max-width: 66%;
         padding: 1.5rem;
     }
-    .Payment-svg , .Payment-title{
+    /* .Payment-svg , .Payment-title{
         display: none;
-    }
+    } */
+     .Payment{
+        max-width: 85%;
+        padding: 2rem;
+     }
     .Payment-form label{
         color: var(--c-primary-75);
     }
@@ -324,11 +396,13 @@
     .Form-presection.isActive{
         justify-content: space-between;
     }
-
     /* Popip */
     .Payment-container{
         max-width: 80%;
         padding: 1rem;
+    }
+    .Payment-description{
+        display: none;
     }
     .Payment-form{
         margin: .5rem 0 0;

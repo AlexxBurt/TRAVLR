@@ -104,4 +104,4 @@ window.addEventListener(`DOMContentLoaded`, async () => {
     })
   })
 })
-})()
+})();

@@ -5,12 +5,14 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    bottom: -5%;
+    gap: .5rem;
+    bottom: -8%;
     z-index: 2;
     transition: bottom .6s ease , background 1s ease ;
 }
 .Footer.isVisible{
     bottom: 0;
+    gap: 0;
     background: linear-gradient(180deg, transparent, var(--c-secondary-50));
 }
 /* svg chevron doble de Cerrar */
@@ -44,9 +46,11 @@
     flex-flow: row nowrap;
     align-items: center;
 }
+/* Le damos margen al botón del popup legal para separarlo de los botones principales */
 .Footer-li:last-child{
     margin-left: 3rem;
 }
+/* Botones principales del footer */
 .Footer-a{
     font-size: var(--fs-regular);
     font-weight: var(--fw-bold);
@@ -56,6 +60,7 @@
     transition: color .4s ease;
     cursor: pointer;
 }
+/* Botón del popup */
 .Footer-a--secondary{
     font-weight: var(--fw-regular);
     text-transform: none;
@@ -64,13 +69,13 @@
     color: var(--c-primary-100);
 }
 
-/* Capa de fondo negra al abrir el popup de textos legales */
 .Footer-background{
     display: none;
     opacity: 0;
     pointer-events: none;
     transition: opacity 1s ease;
 }
+/* Capa de fondo negra al abrir el popup de textos legales */
 .Footer-background.isVisible{
     width: 100vw;
     min-height: 100vh;
@@ -83,9 +88,10 @@
     left: 0;
     z-index: 3;
 }
+/* Caja del popup en sí */
 .Footer-popup{
+    width: 70%;
     min-height: 70vh;
-    width: 66%;
     background-color: var(--c-secondary-100);
     margin: 0 auto;
     padding: 2.5rem;
@@ -99,21 +105,28 @@
     transform: translateY(-50%) translateX(-50%);
     box-shadow: var(--bs-box-small);
 }
-/* svg de cerrar popup */
-.Popup-svg{
+/* Estilo del svg de cerrar popup + hover en el svg*/
+.Popup-close{
     width: fit-content;
     height: 1.5rem;
     position: absolute;
-    top: 2%;
-    left: 96.5%;
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    z-index: 2;
     opacity: .75;
     cursor: pointer;
     transition: opacity .3s ease;
 }
-.Popup-svg:hover{
+.Popup-close:hover{
     opacity: .5;
     scale: 1.05;
 }
+/*
+Estilos del contenido popup
+- Header
+- Estilos de los tabs: default, hover y active
+*/
 .Popup-header{
     display: flex;
     flex-direction: column;
@@ -124,7 +137,7 @@
 .Popup-tab{
     padding: .5rem 1rem;
     border-radius: var(--br-square);
-    font-size: var(--fs-big);
+    font-size: var(--fs-med);
     font-weight: var(--fw-bold);
     text-transform: uppercase;
     color: var(--c-primary-50);
@@ -140,18 +153,22 @@
     color: var(--c-primary-50);
     box-shadow: var(--bs-btn);
 }
+/* Texto oculto o visible si su tab está active */
 .Popup-info{
     display: none;
     transform: translateY(10%);
 }
 .Popup-info.isVisible{
     max-width: 95%;
-    margin: 1.5rem auto;
+    min-height: 32rem;
+    max-height: 32rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    overflow: scroll;
     transform: translateY(0);
 }
+/* Estilos de elementos dentro de los textos */
 .Popup-h2{
     font-size: var(--fs-med);
     font-weight: var(--fw-bold);
@@ -172,19 +189,54 @@
     color: var(--c-primary-100);
     text-decoration: underline;
 }
-.Popup-ul{
-    display: flex;
-    gap: 3rem;
-}
-
-/* Fondo semitransparente blanco para mejorar legibilidad */
-::selection{
+/* Fondo semitransparente blanco al "subrayar" para mejorar legibilidad en pág. oscura*/
+Footer ::selection{
     background-color: var(--c-primary-25);
 }
 
 
 /* Responsive para móvil */
+@media (min-width: 1600px){
+    .Footer{
+        bottom: -6%;
+    }
+}
+
+
+
+/* Responsive para móvil */
+@media (max-width: 1200px){
+    .Footer-popup{
+        width: 80%;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+    }
+    .Popup-header{
+        flex-direction: row;
+        gap: .5rem;
+        padding-right: 3rem;
+        padding-bottom: .5rem;
+        overflow: scroll;
+        border-right: none;
+        border-bottom: 1px solid var(--c-primary-50);
+    }
+    .Popup-tab{
+        font-size: var(--fs-regular);
+        padding: .5rem;
+    }
+    .Popup-info.isVisible {
+        min-height: 25rem;
+        max-height: 25rem;
+        gap: .5rem;
+    }
+}
+
+/* Responsive para móvil */
 @media (max-width: 768px){
+    .Footer-popup{
+        width: 90%;
+    }
     .Footer-a{
         padding: .25rem 1rem;
     }
@@ -194,14 +246,14 @@
 /* Responsive para móvil */
 @media (max-width: 480px){
     .Footer{
-        bottom: -4%;
+        bottom: -6%;
         padding: .5rem 0;
         display: flex;
         flex-direction: column;
         position: fixed;
     }
     .Footer.isVisible{
-        background: linear-gradient(180deg, transparent, var(--c-secondary-75));
+        background: linear-gradient(180deg , transparent , var(--c-secondary-75));
         bottom: 0;
     }
     .Footer-li:last-child{
@@ -216,8 +268,14 @@
     }
     .Popup-header{
         flex-direction: row;
+        padding-right: 2.5rem;
         border-right: none;
         border-bottom: 1px solid var(--c-primary-50);
+    }
+    .Popup-close {
+        top: .75rem;
+        right: .75rem;
+        left: auto;
     }
     .Popup-tab{
         font-size: var(--fs-med);
@@ -227,15 +285,7 @@
         gap: 1rem;
         margin: 1rem auto 0
     }
-    .Popup-ul{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 1rem;
-    }
     .Popup-li{
-    margin: .5rem 0 0 0;
-    }
-    .Popup p{
-        font-size: var(--fs-small);
+        margin: .5rem 0 0 0;
     }
 }

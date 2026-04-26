@@ -41,12 +41,16 @@
     <header class="Header"></header>
 
     <main>
+        
+        <h1 class="u-h1">Confirma tu reserva</h1>
+
         <div class="Wrapper">
-            <h1 class="u-h1">Confirma tu reserva</h1>
             <div class="Wrapper-col Form">
                 <!-- Formulario de info de los pasajeros -->
                 <h2 class="Form-h2">Tus datos</h2>
                 <form action="#" method="get">
+                    <!-- Selector de fecha y número de personas -->
+                     <!-- Esta sección luego se ocultará al "Confirmar" -->
                     <fieldset class="Form-presection isActive">
                         <div class="Form-date">
                             <label for="date">Elige una fecha</label>
@@ -68,8 +72,8 @@
                 </form>
             </div>
             <div class="Wrapper-col Checkout">
-                <h2 class="Checkout-h2" title="* Precios por persona y noche; el importe total se calcula según el número de viajeros.">Tu reserva <span class="Checkout-info">*</span></h2>
-                <!-- Información final del carrito y precios -->
+                <h2 class="Checkout-h2" title="* Precios por persona y noche. El importe total se calcula según el número de viajeros.">Tu reserva <span class="Checkout-info">*</span></h2>
+                <!-- Información final del carrito y precios de las selecciones en págs. anteriores -->
                 <div class="Checkout-summary">
                     <div class="Checkout-field">
                         <h3 class="Checkout-h3">Vuelo con destino:</h3>
@@ -84,7 +88,7 @@
                             <span class="Checkout-span">${Tour-1}</span>
                             <span class="Checkout-span--price">${Precio}</span>
                         </div>
-                        <!-- Campos extra opcionales que se muestran en función del número de pasajeros -->
+                        <!-- Campos extra opcionales que se muestran en función de los tours elegidos -->
                         <div class="Checkout-data">
                             <span class="Checkout-span">${Tour-2}</span>
                             <span class="Checkout-span--price">${Precio}</span>
@@ -102,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Carrito dinámico con las selecciones de las páginas anteriores -->
+                <!-- Precio total de las selecciones de las páginas anteriores multiplicado por el número de pasajeros establecido -->
                 <div class="Checkout-total">
                     <span>Total</span>
                     <span>${Precio total}</span>
@@ -114,13 +118,14 @@
         <!-- Popup de pasarela de pago falsa -->
         <div class="Popup-background">
             <div class="Popup-payment Payment">
-
+                <!-- svg para cerrar el popup-->
                 <svg xmlns="http://www.w3.org/2000/svg" class="Payment-svg" width="80" height="80" viewBox="0 0 24 24"><rect width="24" height="24" fill="none" />
                     <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m7 7l10 10M7 17L17 7" />
                 </svg>
-
+                <!-- Titulares del popup -->
                 <span class="Payment-title">Método de pago</span>
                 <span class="Payment-description">Introduzca el email donde quiera recibir sus billetes y la tarjeta con la que desee realizar el pago.</span>
+                <!-- Formulario de pago -->
                 <form action="#" method="get" class="Payment-form">
                     <label for="emai">Correo electrónico</label>
                     <input type="email" class="Payment-input" name="emai" id="emai" placeholder="ejemplo@email.com" required>
@@ -140,11 +145,13 @@
                             <input type="number" class="Payment-input" name="cardcvv" id="cardcvv" placeholder="000" required>
                         </div>
                     </fieldset>
+                    <!-- Botones -->
                     <div class="Payment-buttons">
                         <button type="button" class="Payment-cancel u-primary" title="Cancelar">Cancelar</button>
                         <button type="submit" class="Payment-submit u-primary" title="Realizar pago">Realizar pago</button>
                     </div>
                 </form>
+                <span class="Payment-response"><span class="Payment-symbol">✔</span> Gracias por tu compra. Pago realizado con éxito.</span>
             </div>
         </div>
 

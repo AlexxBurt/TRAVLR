@@ -66,14 +66,54 @@ if (checkoutButton && paymentPopup) {
 // El botón de "Cancelar" y el svg "X" cierran el popup
 const buttonCancel = document.querySelector(`.Payment-cancel`)
 const svgClose = document.querySelector(`.Payment-svg`)
+const paymentForm = document.querySelector(`.Payment-form`)
+const paymentSubmit = document.querySelector(`.Payment-submit`)
+const paymentResponse = document.querySelector(`.Payment-response`)
+const paymentBox = document.querySelector(`.Popup-payment.Payment`)
+
+const resetPaymentState = () => {
+  if (paymentForm) paymentForm.style.display = ``
+  if (paymentSubmit) paymentSubmit.disabled = false
+  if (paymentResponse) {
+    paymentResponse.classList.remove(`isVisible`)
+    paymentResponse.style.display = `none`
+  }
+}
+
+if (paymentResponse && paymentBox && paymentResponse.parentElement !== paymentBox) {
+  paymentBox.appendChild(paymentResponse)
+}
+
+resetPaymentState()
 
 const closePopup = () => {
   if (!paymentPopup) return
   paymentPopup.classList.remove(`isVisible`)
+  resetPaymentState()
 }
 
 if (buttonCancel) buttonCancel.addEventListener(`click`, closePopup)
 if (svgClose) svgClose.addEventListener(`click`, closePopup)
+
+if (paymentForm && paymentSubmit && paymentResponse) {
+  paymentForm.addEventListener(`submit`, e => {
+    e.preventDefault()
+
+    if (!paymentForm.checkValidity()) {
+      paymentForm.reportValidity()
+      return
+    }
+
+    paymentSubmit.disabled = true
+
+    paymentForm.style.display = `none`
+
+    setTimeout(() => {
+      paymentResponse.style.display = `block`
+      paymentResponse.classList.add(`isVisible`)
+    }, 1500)
+  })
+}
 
 
 
@@ -151,4 +191,4 @@ const renderCheckoutByCountry = async () => {
 window.addEventListener(`DOMContentLoaded`, () => {
   renderCheckoutByCountry().catch(() => {})
 })
-})()
+})();

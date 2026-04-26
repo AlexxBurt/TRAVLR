@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat( 2 , 1fr );
 }
+/* Cuadro del lado derecho con el contenido */
 .Wrapper-content{
     grid-column: 2;
     max-height: fit-content;
@@ -18,12 +19,14 @@
 .Wrapper-content.isFading{
     animation: fadeOut .26s ease both;
 }
+/* Acordeón que incluye las distintas opciones de hoteles */
 .Accordion{
     display: grid;
     grid-template-columns: 1fr;
     gap: .625rem;
     font-size: var(--fs-regular);
 }
+/* Cada una de las "secciones" del acordeón (cerradas) */
 .Accordion-option{
     max-height: 2.75rem;
     display: flex;
@@ -36,11 +39,18 @@
     overflow: hidden;
     transition: max-height 1s ease , color 1s ease , border-bottom 1s ease;
 }
+/* Cajas del acordeón abiertas */
 .Accordion-option.isActive{
     max-height: fit-content;
     color: var(--c-primary-100);
     border-bottom: 2px solid var(--c-primary-50);
 }
+/*
+Estilos del nombre del hotel:
+- Default
+- Hover
+- Active
+*/
 .Accordion-h2{
     width: 100%;
     padding: .5rem .5rem 1rem;
@@ -57,6 +67,7 @@
 .Accordion-h2.isActive{
     border-bottom: 1px solid var(--c-primary-100);
 }
+/* Descripción oculta o visible */
 .Accordion-p{
     padding: .25rem 0 1.5rem 2rem;
     opacity: 0;
@@ -67,6 +78,7 @@
     opacity: 1;
     transform: translateY(0);
 }
+/* Botón de la caja oculto o visible */
 .Accordion-button{
     opacity: 0;
     transform: translateY(-1rem);
@@ -88,6 +100,14 @@
 
 
 /* Responsive pantallas pequeñas */
+@media (max-width: 1200px){
+    .Wrapper{
+        grid-template-columns: .25fr 1fr;
+    }
+}
+
+
+/* Responsive tablet */
 @media (max-width: 960px){
     .Wrapper{
         grid-template-columns: 1fr;

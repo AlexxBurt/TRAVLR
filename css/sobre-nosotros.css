@@ -1,5 +1,5 @@
 .Wrapper{
-    background-image:   linear-gradient(var(--c-secondary-75), transparent) ,
+    background-image:   linear-gradient(var(--c-secondary-75) , transparent) ,
                         url('../assets/images/airplane.webp');
     background-size: cover;
     background-position: top center;
@@ -12,9 +12,9 @@
     gap: 2.5rem;
     color: var(--c-primary-100);
     position: relative;
-    overflow: clip;
+    overflow: clip; /* Hacemos que el texto aparezca - desaparezca al salir del cuadro central */
 }
-/* Contenedor que hace aparecer y desaparecer el texto */
+/* Contenedor central que hace muestra el texto visible */
 .Wrapper-content{
     position: sticky;
     top: 20vh;
@@ -36,6 +36,7 @@
     font-size: 1.25em;
     line-height: 1.5em;
 }
+/* Estilos comunes para las secciones horizontales */
 .Stats , .Reviews{
     margin: 5rem auto;
     display: flex;
@@ -43,12 +44,14 @@
     align-items: center;
     position: relative;
 }
+/* Grid de estadísticas */
 .Stats-grid{
     display: grid;
     grid-template-columns: repeat( 3 , 1fr );
     margin: 4rem auto;
     font-size: var(--fs-extrabig);
 }
+/* Item de estadísticas */
 .Stats-item{
     display: flex;
     flex-direction: column;
@@ -57,13 +60,16 @@
     align-items: center;
     color: var(--c-primary-100);
 }
-.Stats-item--middle{
+/* Al item del centro le añadimos bordes a los lados para separación visual */
+.Stats-item:nth-child(2){
     border-left: 2px solid var(--c-primary-50);
     border-right: 2px solid var(--c-primary-50);
 }
+/* Texto normal */
 .Stats-span{
     text-align: center;
 }
+/* Números grandes */
 .Stats-span--big{
     font-size: 5rem;
     font-weight: var(--fw-bold);
@@ -87,15 +93,13 @@
     flex-direction: column;
     gap: 1rem;
 }
-/* Estrellas */
+/* Estrellas de las review*/
 .Reviews-rating{
-    font-size: 1.5rem;
+    font-size: 1.5em;
     margin: 0 0 .5rem 0;
+    color: var(--c-primary-75);
 }
-.Reviews-p{
-    font-size: var(--fs-regular);
-}
-/* Estilo general de los títulos de la págin */
+/* Estilo general de los títulos de la página */
 .u-h2{
     margin: 0;
     font-size: 3rem;
@@ -113,6 +117,10 @@
 /* Primer título de la página -> a la derecha */
 .Container--top .u-h2{
     text-align: end;
+}
+/* Estilo al "subrayar" que oscurece el texto seleccionado */
+.Wrapper ::selection{
+    color: var(--c-primary-25);
 }
 
 
@@ -170,16 +178,15 @@
         gap: 2rem;
     }
     .Container-col{
-        max-width: 50%;
+        max-width: 100%;
     }
     .Stats-grid , .Reviews-grid{
         grid-template-columns: 1fr;
     }
     .Stats-item{
         padding: 2rem;
-        /* font-size: var(--fs-regular); */
     }
-    .Stats-item--middle{
+    .Stats-item:nth-child(2){
         border-left: 0;
         border-right: 0;
     }

@@ -5,6 +5,7 @@
     min-height: 100vh;
     overflow: hidden;
 }
+/* Carrusel de países */
 .Slider{
     display: flex;
     flex-direction: column;
@@ -12,6 +13,7 @@
     overflow: hidden;
     touch-action: none;
 }
+/* Cada sección del carrusel = cada cuadro de un país */
 .Slider-frame{
     min-height: 100vh;
     background-size: cover;
@@ -26,7 +28,7 @@
     transition: transform 1s cubic-bezier( .62, .24, .33, 1 );
     will-change: transform;
 }
-
+/* Texto de cada país */
 .Slider-text{
     color: var(--c-primary-100);
     font-size: var(--fs-huge);
@@ -35,13 +37,13 @@
     position: fixed;
     top: 62%;
 }
+/* Botón */
 .Slider-button{
     max-width: fit-content;
     position: fixed;
     top: 72%
 }
-
-
+/* Puntos para la navegación en el lado derecho */
 .Selector{
     width: fit-content;
     min-height: 20rem;
@@ -52,8 +54,13 @@
     position: fixed;
     top: calc( 50vh - 10rem );
     right: 8%;
-    /* z-index: 1; */
 }
+/*
+Cada uno de los puntos en estado:
+- Default
+- Hover
+- Active
+*/
 .Selector-dot{
     width: .75rem;
     min-height: .75rem;

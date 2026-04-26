@@ -6,22 +6,26 @@
 const initFooterPopupTabs = footer => {
     if (!footer) return
 
-    const tabs = footer.querySelectorAll(`.Popup-tab`)
-    const textNodes = footer.querySelectorAll(`.Popup-info, .Popup-text`)
-    const texts = [...new Set([...textNodes])]
-    if (!tabs.length || !texts.length) return
+    const buttons = footer.querySelectorAll(`.Popup-tab`)
+    const texts = footer.querySelectorAll(`.Popup-info`)
+    if (!buttons.length || !texts.length) return
 
-    const setActiveTab = index => {
-        tabs.forEach((tab, i) => tab.classList.toggle(`isActive`, i === index))
-        texts.forEach((text, i) => text.classList.toggle(`isVisible`, i === index))
+    const setActive = index => {
+        buttons.forEach(button => button.classList.remove(`isActive`))
+        texts.forEach(text => text.classList.remove(`isVisible`))
+
+        if (buttons[index]) buttons[index].classList.add(`isActive`)
+        if (texts[index]) texts[index].classList.add(`isVisible`)
     }
 
-    tabs.forEach((tab, index) => {
-        tab.addEventListener(`click`, () => setActiveTab(index))
+    buttons.forEach((_, i) => {
+        buttons[i].addEventListener(`click`, () => {
+            setActive(i)
+        })
     })
 
-    const defaultIndex = [...tabs].findIndex(tab => tab.classList.contains(`isActive`))
-    setActiveTab(defaultIndex >= 0 ? defaultIndex : 0)
+    const defaultIndex = [...buttons].findIndex(button => button.classList.contains(`isActive`))
+    setActive(defaultIndex >= 0 ? defaultIndex : 0)
 }
 
 
@@ -31,20 +35,24 @@ const loadFooter = () => {
     const svg = document.querySelector(`.Footer-svg`)
     const footerButton = document.querySelector(`.Footer-a--secondary`)
     const popup = footer ? footer.querySelector(`.Footer-background`) : null
-    const svgClose = footer ? footer.querySelector(`.Popup-svg`) : null
+    const svgClose = footer ? footer.querySelector(`.Popup-close`) : null
 
     if (!footer || !svg) return
 
+    if (svgClose) {
+        svgClose.setAttribute(`width`, `24`)
+        svgClose.setAttribute(`height`, `24`)
+        svgClose.style.width = `1.5rem`
+        svgClose.style.height = `1.5rem`
+    }
+
     const animateFooterReveal = () => {
-        const items = [
-            svg,
-            ...footer.querySelectorAll(`.Footer-li`)
-        ]
+        const items = [...footer.querySelectorAll(`.Footer-li`)]
 
         items.forEach(item => {
             item.classList.remove(`u-fade-in-up`)
-            item.style.removeProperty(`--fade-up-duration`)
-            item.style.removeProperty(`--fade-up-delay`)
+            item.style.removeProperty(`--a-fadeup-duration`)
+            item.style.removeProperty(`--a-fadeup-delay`)
         })
 
         void footer.offsetHeight
@@ -52,8 +60,8 @@ const loadFooter = () => {
         const speeds = [0.85, 0.95, 1.05]
         items.forEach((item, index) => {
             const delay = 0.18 + (index * 0.1)
-            item.style.setProperty(`--fade-up-duration`, `${speeds[index % speeds.length]}s`)
-            item.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+            item.style.setProperty(`--a-fadeup-duration`, `${speeds[index % speeds.length]}s`)
+            item.style.setProperty(`--a-fadeup-delay`, `${delay.toFixed(2)}s`)
             item.classList.add(`u-fade-in-up`)
         })
     }
@@ -157,7 +165,7 @@ const AppData = (() => {
     }
 
 
-// Permite añadir o eliminar tours (en el carrito)
+    // Permite añadir o eliminar tours (en el carrito)
     const isTourSelected = tour => getCart().tours.some(item => item.name === tour.name && sameCountry(item.country, tour.country))
     const toggleTour = tour => {
         const cart = getCart()
@@ -301,8 +309,8 @@ const initFadeInUp = () => {
         ordered.forEach((element, index) => {
             const delay = 0.45 + (sequence * 0.08) + extraDelay
             element.classList.add(`u-fade-in-up`)
-            element.style.setProperty(`--fade-up-duration`, `${times[index % times.length]}s`)
-            element.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+            element.style.setProperty(`--a-fadeup-duration`, `${times[index % times.length]}s`)
+            element.style.setProperty(`--a-fadeup-delay`, `${delay.toFixed(2)}s`)
             sequence += 1
         })
     }
@@ -340,4 +348,4 @@ window.addEventListener(`DOMContentLoaded`, () => {
     }
 })
 window.addEventListener(`cart:changed`, updateHeader)
-})()
+})();

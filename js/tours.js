@@ -50,8 +50,8 @@ window.addEventListener(`DOMContentLoaded`, async () => {
 
     nodes.forEach((node, index) => {
       const delay = 0.45 + (index * 0.08)
-      node.style.setProperty(`--fade-up-duration`, `${speeds[index % speeds.length]}s`)
-      node.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+      node.style.setProperty(`--a-fadeup-duration`, `${speeds[index % speeds.length]}s`)
+      node.style.setProperty(`--a-fadeup-delay`, `${delay.toFixed(2)}s`)
       node.classList.add(`u-fade-in-up`)
     })
   }
@@ -104,4 +104,4 @@ window.addEventListener(`DOMContentLoaded`, async () => {
   paint()
   restartTourAnimations()
 })
-})()
+})();

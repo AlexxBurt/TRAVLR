@@ -23,8 +23,8 @@
       slides.forEach(frame => {
         frame.querySelectorAll(`.Slider-text, .Slider-button`).forEach(node => {
           node.classList.remove(`u-fade-in-up`)
-          node.style.removeProperty(`--fade-up-duration`)
-          node.style.removeProperty(`--fade-up-delay`)
+          node.style.removeProperty(`--a-fadeup-duration`)
+          node.style.removeProperty(`--a-fadeup-delay`)
         })
       })
 
@@ -40,8 +40,8 @@
       const speeds = [0.85, 0.95]
       items.forEach((item, index) => {
         const delay = 0.5 + (index * 0.22)
-        item.style.setProperty(`--fade-up-duration`, `${speeds[index % speeds.length]}s`)
-        item.style.setProperty(`--fade-up-delay`, `${delay.toFixed(2)}s`)
+        item.style.setProperty(`--a-fadeup-duration`, `${speeds[index % speeds.length]}s`)
+        item.style.setProperty(`--a-fadeup-delay`, `${delay.toFixed(2)}s`)
         item.classList.add(`u-fade-in-up`)
       })
     }
@@ -145,7 +145,7 @@
       if (countrySlug) app.setCountry(countrySlug)
     }
 
-    // Trae los subtítulos de los paises del campo `titular` de "countries.json"
+    // Trae los subtítulos de los países del campo `titular` de "countries.json"
     try {
       const data = await app.loadData()
       const countries = Object.entries(data.countries || {})
@@ -183,4 +183,4 @@
     paint()
     animateActiveSlide()
   })
-})()
+})();

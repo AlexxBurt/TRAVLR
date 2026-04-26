@@ -69,7 +69,7 @@
   /* Tamaño de fuentes */
   --fs-huge: clamp( 1.75em , 3.5vw , 3em );
   --fs-extrabig: 2em;
-  --fs-big: clamp( 1.5rem , 3.5vw , 2.5rem);
+  --fs-big: clamp( 1.5em , 3.5vw , 2.5em);
   --fs-med: clamp( 1em , 3.5vw , 1.25em );
   --fs-regular: clamp( 1em , 3vw , 1.125em );
   --fs-small: .75em;
@@ -171,6 +171,7 @@ body {
   color: var(--c-secondary-75);
   padding: .25rem .6rem;
   border-radius: var(--br-round);
+  font-family: var(--ff-primary);
   font-weight: var(--fw-bold);
   position: absolute;
   top: .375rem;
@@ -280,22 +281,15 @@ input:-webkit-autofill {
 }
 
 .u-fade-in-up{
-  opacity: 0;
   animation-name: fadeInUp;
-  animation-duration: var(--fade-up-duration, .8s);
-  animation-delay: var(--fade-up-delay, .7s);
-  animation-timing-function: cubic-bezier(.22, 1, .36, 1);
-  animation-fill-mode: forwards;
+  opacity: 0;
+  animation-timing-function: cubic-bezier( .22 , 1 , .36 , 1 );
+  animation-duration: var(--a-fadeup-duration, .8s);
+  animation-delay: var(--a-fadeup-delay, .7s);
   will-change: transform, opacity;
+  animation-fill-mode: forwards;
 }
 
-@media (prefers-reduced-motion: reduce){
-  .u-fade-in-up{
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
 
 
 /* Responsive Pantallas grandes */
