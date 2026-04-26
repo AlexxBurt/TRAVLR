@@ -169,10 +169,7 @@ Galería de imágenes relativas a los tours
     .Information-content , .Information-buttons{
         gap: .5rem;
     }
-    .Information-content:hover .Information-texts {
-        max-height: 15rem;
-    }
-    .Information-texts:hover{
+    .Information-content:hover , .Information-content:hover .Information-texts {
         max-height: 15rem;
     }
     .Gallery{
@@ -192,11 +189,11 @@ Galería de imágenes relativas a los tours
         min-height: 22rem;
         gap: 1rem;
     }
-    .Information-content:hover .Information-texts{
-        max-height: 15rem;
+    .Information-texts{
+        max-height: 12rem;
     }
     .Gallery{
-        min-height: 15rem;
+        min-height: 12rem;
     }
 }
 
