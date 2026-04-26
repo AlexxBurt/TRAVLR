@@ -119,6 +119,12 @@ input [type="text"]{
         max-width: 100%;
         padding: 2rem;
     }
+    .Form , .Form-group{
+        gap: .5rem;
+    }
+    .Form label {
+        margin: 0;
+    }
 }
 
 /* Responsive Móvil */
@@ -128,6 +134,9 @@ input [type="text"]{
     }
     .Contact{
         padding: 1.5rem;
+    }
+    .Contact-h2 , .Contact-span{
+        display: none;
     }
     .Form{
         margin: 0;

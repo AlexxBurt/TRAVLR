@@ -190,6 +190,9 @@
         border-left: 0;
         border-right: 0;
     }
+    .Reviews-card{
+        width: 100%;
+    }
     .Reviews .u-h2{
         text-align: center;
     }
