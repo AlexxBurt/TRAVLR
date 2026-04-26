@@ -23,7 +23,6 @@ La aplicación trae la mayoría de la información desde archivos JSON locales y
 - Optimización de elementos visuales (imágenes y fondos) para equilibrio entre calidad y rendimiento.
 - Desarrollo de documentos JSON para crear contenido dinámico en la interfaz.
 - Uso mejorado y optimización de herramientas de Inteligencia Artificial aplicada a entornos de trabajo de programación / maquetación.
-- 
 
 
 ## Tecnologías 🛠
