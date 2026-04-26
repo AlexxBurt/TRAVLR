@@ -190,10 +190,10 @@ Galería de imágenes relativas a los tours
         gap: 1rem;
     }
     .Information-texts{
-        max-height: 12rem;
+        max-height: 10rem;
     }
     .Gallery{
-        min-height: 12rem;
+        min-height: 9rem;
     }
 }
 
